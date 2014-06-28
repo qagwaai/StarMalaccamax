@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+
+	<listener>
+		<listener-class>com.qagwaai.starmalaccamax.server.listener.ApplicationStartup</listener-class>
+	</listener>
+
+	<servlet>
+	
+		<servlet-name>userService</servlet-name>
+		<servlet-class>com.qagwaai.starmalaccamax.server.UserServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>loginService</servlet-name>
+		<servlet-class>com.qagwaai.starmalaccamax.server.LoginServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>captainService</servlet-name>
+		<servlet-class>com.qagwaai.starmalaccamax.server.CaptainServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>solarSystemService</servlet-name>
+		<servlet-class>com.qagwaai.starmalaccamax.server.SolarSystemServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>planetService</servlet-name>
+		<servlet-class>com.qagwaai.starmalaccamax.server.PlanetServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>PlanetService</servlet-name>
+		<servlet-class>com.qagwaai.starmalaccamax.server.PlanetServiceImpl</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>JumpGateService</servlet-name>
+		<servlet-class>com.qagwaai.starmalaccamax.server.JumpGateServiceImpl</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>StarService</servlet-name>
+		<servlet-class>com.qagwaai.starmalaccamax.server.StarServiceImpl</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>JobService</servlet-name>
+		<servlet-class>com.qagwaai.starmalaccamax.server.JobServiceImpl</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>MarketService</servlet-name>
+		<servlet-class>com.qagwaai.starmalaccamax.server.MarketServiceImpl</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ShipService</servlet-name>
+		<servlet-class>com.qagwaai.starmalaccamax.server.ShipServiceImpl</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>TickService</servlet-name>
+		<servlet-class>com.qagwaai.starmalaccamax.server.TickServiceImpl</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>MarketService</servlet-name>
+		<servlet-class>com.qagwaai.starmalaccamax.server.MarketServiceImpl</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>PlayerSummary</servlet-name>
+		<servlet-class>com.qagwaai.starmalaccamax.server.PlayerSummaryServiceImpl</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GameEvent</servlet-name>
+		<servlet-class>com.qagwaai.starmalaccamax.server.GameEventServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>channelService</servlet-name>
+		<servlet-class>com.qagwaai.starmalaccamax.server.ChannelServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>testPush</servlet-name>
+		<servlet-class>com.qagwaai.starmalaccamax.server.TestPushServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>UtilityService</servlet-name>
+		<servlet-class>com.qagwaai.starmalaccamax.server.UtilityServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>Upload</servlet-name>
+		<servlet-class>com.qagwaai.starmalaccamax.server.ProfileImageUpload</servlet-class>
+	</servlet>
+
+
+	<servlet>
+		<servlet-name>ProfileImage</servlet-name>
+		<servlet-class>com.qagwaai.starmalaccamax.server.ProfileImage</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>userService</servlet-name>
+		<url-pattern>/starmalaccamax/user</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>loginService</servlet-name>
+		<url-pattern>/starmalaccamax/login</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>captainService</servlet-name>
+		<url-pattern>/starmalaccamax/captain</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>solarSystemService</servlet-name>
+		<url-pattern>/starmalaccamax/solarsystem</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>planetService</servlet-name>
+		<url-pattern>/starmalaccamax/planet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PlanetService</servlet-name>
+		<url-pattern>/starmalaccamax/PlanetService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>JumpGateService</servlet-name>
+		<url-pattern>/starmalaccamax/JumpGateService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>StarService</servlet-name>
+		<url-pattern>/starmalaccamax/StarService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>JobService</servlet-name>
+		<url-pattern>/starmalaccamax/JobService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>MarketService</servlet-name>
+		<url-pattern>/starmalaccamax/MarketService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ShipService</servlet-name>
+		<url-pattern>/starmalaccamax/ShipService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>TickService</servlet-name>
+		<url-pattern>/starmalaccamax/cron/TickService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>MarketService</servlet-name>
+		<url-pattern>/starmalaccamax/MarketService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PlayerSummary</servlet-name>
+		<url-pattern>/starmalaccamax/PlayerSummary</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GameEvent</servlet-name>
+		<url-pattern>/starmalaccamax/GameEvent</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>channelService</servlet-name>
+		<url-pattern>/starmalaccamax/channel</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>testPush</servlet-name>
+		<url-pattern>/testpush</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UtilityService</servlet-name>
+		<url-pattern>/starmalaccamax/UtilityService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Upload</servlet-name>
+		<url-pattern>/profileImageUpload</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ProfileImage</servlet-name>
+		<url-pattern>/profileImage</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>solarSystemService</servlet-name>
+		<url-pattern>/com.qagwaai.starmalaccamax.StarMalaccamaxJUnit/test/solarSystem</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>captainService</servlet-name>
+		<url-pattern>/com.qagwaai.starmalaccamax.StarMalaccamaxJUnit/test/captain</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>JobService</servlet-name>
+		<url-pattern>/com.qagwaai.starmalaccamax.StarMalaccamaxJUnit/test/job</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PlanetService</servlet-name>
+		<url-pattern>/com.qagwaai.starmalaccamax.StarMalaccamaxJUnit/test/planet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>MarketService</servlet-name>
+		<url-pattern>/com.qagwaai.starmalaccamax.StarMalaccamaxJUnit/test/market</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>StarService</servlet-name>
+		<url-pattern>/com.qagwaai.starmalaccamax.StarMalaccamaxJUnit/test/star</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PlayerSummary</servlet-name>
+		<url-pattern>/com.qagwaai.starmalaccamax.StarMalaccamaxJUnit/test/playerSummary</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ShipService</servlet-name>
+		<url-pattern>/com.qagwaai.starmalaccamax.StarMalaccamaxJUnit/test/ship</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>loginService</servlet-name>
+		<url-pattern>/com.qagwaai.starmalaccamax.StarMalaccamaxJUnit/test/login</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GameEvent</servlet-name>
+		<url-pattern>/com.qagwaai.starmalaccamax.StarMalaccamaxJUnit/test/gameEvent</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>JumpGateService</servlet-name>
+		<url-pattern>/com.qagwaai.starmalaccamax.StarMalaccamaxJUnit/test/jumpGate</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>TickService</servlet-name>
+		<url-pattern>/com.qagwaai.starmalaccamax.StarMalaccamaxJUnit/test/tick</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>userService</servlet-name>
+		<url-pattern>/com.qagwaai.starmalaccamax.StarMalaccamaxJUnit/test/user</url-pattern>
+	</servlet-mapping>
+
+     <context-param>
+         <param-name>quartz:shutdown-on-unload</param-name>
+         <param-value>true</param-value>
+     </context-param>
+     <context-param>
+         <param-name>quartz:wait-on-shutdown</param-name>
+         <param-value>false</param-value>
+     </context-param>
+     <context-param>
+         <param-name>quartz:start-scheduler-on-load</param-name>
+         <param-value>true</param-value>
+     </context-param>
+     <listener>
+         <listener-class>
+             org.quartz.ee.servlet.QuartzInitializerListener
+         </listener-class>
+     </listener>
+     
+     <servlet> 
+      <servlet-name>QuartzInitializer</servlet-name> 
+      <servlet-class>org.quartz.ee.servlet.QuartzInitializerServlet</servlet-class> 
+      <init-param>
+
+        <param-name>shutdown-on-unload</param-name>
+        <param-value>true</param-value>
+      </init-param>
+      <load-on-startup>2</load-on-startup>
+
+    </servlet>
+
+	<welcome-file-list>
+		<welcome-file>gwt-hosting.jsp</welcome-file>
+	</welcome-file-list>
+
+</web-app>

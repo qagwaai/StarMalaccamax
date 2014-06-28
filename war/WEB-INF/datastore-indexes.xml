@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datastore-indexes autoGenerate="true">
+    <datastore-index kind="com_qagwaai_starmalaccamax_shared_model_CaptainDTO" ancestor="false">
+        <property name="id" direction="asc" />
+        <property name="ownerId" direction="asc" />
+    </datastore-index>
+    
+    <datastore-index kind="com_qagwaai_starmalaccamax_shared_model_ClosestDTO" ancestor="false">
+        <property name="id" direction="asc" />
+        <property name="solarSystemId" direction="asc" />
+    </datastore-index>
+
+    <datastore-index kind="com_qagwaai_starmalaccamax_shared_model_GameEventDTO" ancestor="false" source="manual">
+        <property name="id" direction="asc" />
+        <property name="playerId" direction="asc" />        
+        <property name="enabled" direction="asc"/>
+        <property name="endDateTime" direction="asc"/>
+        <property name="type" direction="asc"/>
+    </datastore-index>
+
+    <datastore-index kind="com_qagwaai_starmalaccamax_shared_model_JumpGateDTO" ancestor="false">
+        <property name="id" direction="asc" />
+        <property name="solarSystem1Id" direction="asc" />
+        <property name="solarSystem2Id" direction="asc" />
+    </datastore-index>
+
+    <datastore-index kind="com_qagwaai_starmalaccamax_shared_model_MarketDTO" ancestor="false">
+        <property name="id" direction="asc" />
+        <property name="planetId" direction="asc" />
+    </datastore-index>
+    
+    <datastore-index kind="com_qagwaai_starmalaccamax_shared_model_PlanetDTO" ancestor="false">
+        <property name="id" direction="asc" />
+        <property name="solarSystemId" direction="asc" />
+    </datastore-index>
+
+    <datastore-index kind="com_qagwaai_starmalaccamax_shared_model_SatelliteDTO" ancestor="false">
+        <property name="id" direction="asc" />
+        <property name="mainPlanetId" direction="asc" />
+    </datastore-index>
+
+    <datastore-index kind="com_qagwaai_starmalaccamax_shared_model_ShipDTO" ancestor="false">
+        <property name="id" direction="asc" />
+        <property name="ownerId" direction="asc" />
+    </datastore-index>
+
+    <datastore-index kind="com_qagwaai_starmalaccamax_shared_model_StarDTO" ancestor="false">
+        <property name="id" direction="asc" />
+        <property name="solarSystemId" direction="asc" />
+    </datastore-index>
+</datastore-indexes>

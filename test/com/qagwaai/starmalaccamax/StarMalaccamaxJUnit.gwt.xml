@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	<!-- Inherit our applications main module.                      -->
+	<inherits name='com.qagwaai.starmalaccamax.StarMalaccamax' />
+	<servlet path="/test/captain" class="com.qagwaai.starmalaccamax.server.CaptainServiceImpl" />
+	<servlet path="/test/gameEvent" class="com.qagwaai.starmalaccamax.server.GameEventServiceImpl" />
+	<servlet path="/test/job" class="com.qagwaai.starmalaccamax.server.JobServiceImpl" />
+	<servlet path="/test/jumpGate" class="com.qagwaai.starmalaccamax.server.JumpGateServiceImpl" />
+	<servlet path="/test/login" class="com.qagwaai.starmalaccamax.server.LoginServiceImpl" />
+	<servlet path="/test/market" class="com.qagwaai.starmalaccamax.server.MarketServiceImpl" />
+	<servlet path="/test/planet" class="com.qagwaai.starmalaccamax.server.PlanetServiceImpl" />
+	<servlet path="/test/playerSummary" class="com.qagwaai.starmalaccamax.server.PlayerSummaryServiceImpl" />
+	<servlet path="/test/ship" class="com.qagwaai.starmalaccamax.server.ShipServiceImpl" />
+	<servlet path="/test/solarSystem" class="com.qagwaai.starmalaccamax.server.SolarSystemServiceImpl" />
+	<servlet path="/test/star" class="com.qagwaai.starmalaccamax.server.StarServiceImpl" />
+	<servlet path="/test/tick" class="com.qagwaai.starmalaccamax.server.TickServiceImpl" />
+	<servlet path="/test/user" class="com.qagwaai.starmalaccamax.server.UserServiceImpl" />
+
+</module>

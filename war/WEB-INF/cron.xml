@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cronentries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="cron.xsd">
+	<cron>
+		<description>Check through GameEvents to determine actions</description>
+		<schedule>every 5 minutes</schedule>
+		<timezone>America/Denver</timezone>
+		<url>/starmalaccamax/cron/TickService</url>
+	</cron>
+</cronentries>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
+	<application>starmalaccamax</application>
+	<version>1</version>
+
+	<!-- Configure serving/caching of GWT files -->
+	<static-files>
+		<include path="**" />
+
+		<!-- The following line requires App Engine 1.3.2 SDK -->
+		<include path="**.nocache.*" expiration="0s" />
+
+		<include path="**.cache.*" expiration="365d" />
+		<exclude path="**.gwt.rpc" />
+		<exclude path="**Test.java" />
+		<exclude path="**.txt" />
+		<!-- Exclude smartgwt files from the list of static files -->
+		<exclude path="/sc/skins/Enterprise/**.*" />
+		<include path="/starmalaccamax/sc/skins/Enterprise/**.*" />
+		<exclude path="/sc/skins/EnterpriseBlue/**.*" />
+		<exclude path="/starmalaccamax/sc/skins/EnterpriseBlue/**.*" />
+		<exclude path="/sc/skins/Graphite/**.*" />
+		<exclude path="/starmalaccamax/sc/skins/Graphite/**.*" />
+	</static-files>
+
+	<!-- Configure java.util.logging -->
+	<system-properties>
+		<property name="java.util.logging.config.file" value="WEB-INF/logging.properties" />
+	</system-properties>
+	<sessions-enabled>true</sessions-enabled>
+
+	<!--
+		By default all WAR files are also resource files including WEB-INF
+	-->
+	<!-- This overrides the default -->
+	<resource-files>
+		<exclude path="**Test.java" />
+		<exclude path="**.txt" />
+		<!-- Exclude smartgwt files from the list of resource files -->
+		<exclude path="/sc/skins/Enterprise/**.*" />
+		<exclude path="/starmalaccamax/sc/skins/Enterprise/**.*" />
+		<exclude path="/sc/skins/EnterpriseBlue/**.*" />
+		<exclude path="/starmalaccamax/sc/skins/EnterpriseBlue/**.*" />
+		<exclude path="/sc/skins/Graphite/**.*" />
+		<exclude path="/starmalaccamax/sc/skins/Graphite/**.*" />
+	</resource-files>
+	<threadsafe>true</threadsafe>
+</appengine-web-app>
