@@ -7,11 +7,9 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.googlecode.objectify.Key;
-import com.googlecode.objectify.ObjectifyService;
 import com.googlecode.objectify.cmd.Query;
 import com.qagwaai.starmalaccamax.server.dao.DAOException;
 import com.qagwaai.starmalaccamax.server.dao.JumpGateDAO;
-import com.qagwaai.starmalaccamax.shared.model.CaptainDTO;
 import com.qagwaai.starmalaccamax.shared.model.Filter;
 import com.qagwaai.starmalaccamax.shared.model.JumpGate;
 import com.qagwaai.starmalaccamax.shared.model.JumpGateDTO;
@@ -34,7 +32,13 @@ public class ObjectifyJumpGateDAO implements JumpGateDAO {
 		for (Filter criterion : criteria) {
 			if (criterion instanceof SimpleFilterItem) {
 				SimpleFilterItem item = (SimpleFilterItem) criterion;
-				command = command.filter(item.getField(), item.getValue());
+				if (item.getField().equals("solarSystemId1")) {
+					command = command.filter(item.getField(), Integer.valueOf(item.getValue()).intValue());
+				} else if (item.getField().equals("solarSystemId2")) {
+					command = command.filter(item.getField(), Integer.valueOf(item.getValue()).intValue());
+				} else if ( item.getField().equals("id")) {
+					command = (Query<JumpGateDTO>) command.filterKey(Key.create(JumpGateDTO.class, Long.valueOf(item.getValue()).longValue()));
+				}
 			}
 		}
 		return command;
@@ -111,7 +115,7 @@ public class ObjectifyJumpGateDAO implements JumpGateDAO {
 	@Override
 	public ArrayList<JumpGateDTO> getAllJumpGates(int startRow, int endRow,
 			ArrayList<Filter> criteria, String sortBy) throws DAOException {
-		ObjectifyService.ofy().load();
+		//ObjectifyService.ofy().load();
 		Query<JumpGateDTO> command = ofy().load().type(JumpGateDTO.class)
 				.limit(endRow);
 		command = addFilterToCommand(command, criteria);
@@ -123,7 +127,7 @@ public class ObjectifyJumpGateDAO implements JumpGateDAO {
 	@Override
 	public ArrayList<JumpGateDTO> getAllJumpGates(int startRow, int endRow,
 			String sortBy) throws DAOException {
-		ObjectifyService.ofy().load();
+		//ObjectifyService.ofy().load();
 		Query<JumpGateDTO> command = ofy().load().type(JumpGateDTO.class)
 				.limit(endRow);
 		command = addSortsToCommand(command, sortBy);
@@ -138,14 +142,14 @@ public class ObjectifyJumpGateDAO implements JumpGateDAO {
 
 	@Override
 	public int getTotalJumpGates() throws DAOException {
-		ObjectifyService.ofy().load();
+		//ObjectifyService.ofy().load();
 		return ofy().load().type(JumpGateDTO.class).count();
 	}
 
 	@Override
 	public int getTotalJumpGatesWithFilter(ArrayList<Filter> criteria)
 			throws DAOException {
-		ObjectifyService.ofy().load();
+		//ObjectifyService.ofy().load();
 		Query<JumpGateDTO> command = ofy().load().type(JumpGateDTO.class);
 		command = addFilterToCommand(command, criteria);
 		return command.count();
@@ -153,7 +157,7 @@ public class ObjectifyJumpGateDAO implements JumpGateDAO {
 
 	@Override
 	public boolean removeJumpGate(JumpGateDTO jumpGate) throws DAOException {
-		ObjectifyService.ofy().load();
+		//ObjectifyService.ofy().load();
 		ofy().delete().type(JumpGateDTO.class).id(jumpGate.getId());
 		return true;
 	}

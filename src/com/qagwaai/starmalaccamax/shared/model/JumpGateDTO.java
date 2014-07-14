@@ -11,6 +11,7 @@ import java.io.Serializable;
 import com.google.code.twig.annotation.Embedded;
 import com.google.gwt.user.client.rpc.IsSerializable;
 import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Index;
 
 /**
  * @author pgirard
@@ -24,15 +25,18 @@ public final class JumpGateDTO implements JumpGate, IsSerializable, Serializable
 	 */
     @com.google.code.twig.annotation.Id
     @com.googlecode.objectify.annotation.Id
+    @Index
     private Long id;
     /**
 	 * 
 	 */
-    private Long systemId1;
+    @Index
+    private Long solarSystemId1;
     /**
 	 * 
 	 */
-    private Long systemId2;
+    @Index
+    private Long solarSystemId2;
 
     /**
 	 * 
@@ -79,7 +83,7 @@ public final class JumpGateDTO implements JumpGate, IsSerializable, Serializable
      */
     @Override
     public Long getSolarSystem1Id() {
-        return systemId1;
+        return solarSystemId1;
     }
 
     /**
@@ -87,7 +91,7 @@ public final class JumpGateDTO implements JumpGate, IsSerializable, Serializable
      */
     @Override
     public Long getSolarSystem2Id() {
-        return systemId2;
+        return solarSystemId2;
     }
 
     /**
@@ -103,7 +107,7 @@ public final class JumpGateDTO implements JumpGate, IsSerializable, Serializable
      */
     @Override
     public void setLocation1(final LocationDTO location) {
-        this.location1 = location;
+        location1 = location;
     }
 
     /**
@@ -111,7 +115,7 @@ public final class JumpGateDTO implements JumpGate, IsSerializable, Serializable
      */
     @Override
     public void setLocation2(final LocationDTO location) {
-        this.location2 = location;
+        location2 = location;
     }
 
     /**
@@ -119,7 +123,7 @@ public final class JumpGateDTO implements JumpGate, IsSerializable, Serializable
      */
     @Override
     public void setSolarSystem1Id(final Long id) {
-        this.systemId1 = id;
+        solarSystemId1 = id;
     }
 
     /**
@@ -127,30 +131,20 @@ public final class JumpGateDTO implements JumpGate, IsSerializable, Serializable
      */
     @Override
     public void setSolarSystem2Id(final Long id) {
-        this.systemId2 = id;
+        solarSystemId2 = id;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+
+
     @Override
-    public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("JumpGateDTO [id=");
-        builder.append(id);
-        builder.append(", location1=");
-        builder.append(location1);
-        builder.append(", location2=");
-        builder.append(location2);
-        builder.append(", systemId1=");
-        builder.append(systemId1);
-        builder.append(", systemId2=");
-        builder.append(systemId2);
-        builder.append("]");
-        return builder.toString();
-    }
+	public String toString() {
+		return "JumpGateDTO [id=" + id + ", solarSystemId1=" + solarSystemId1
+				+ ", solarSystemId2=" + solarSystemId2 + ", failurePct="
+				+ failurePct + ", location1=" + location1 + ", location2="
+				+ location2 + "]";
+	}
 
-    /**
+	/**
      * 
      * {@inheritDoc}
      */
@@ -165,7 +159,20 @@ public final class JumpGateDTO implements JumpGate, IsSerializable, Serializable
      */
     @Override
     public void setFailurePct(final int pct) {
-        this.failurePct = pct;
+        failurePct = pct;
+    }
+    
+    public static String getFieldGetter(String fieldName) {
+    	String methodName = null;
+    	
+    	if (fieldName.equals("id")) {
+    		methodName = "getId";
+    	} else if (fieldName.equals("solarSystemId1")) {
+    		methodName = "getSolarSystem1Id";
+    	} else if (fieldName.equals("solarSystemId2")) {
+    		methodName = "getSolarSystem2Id";
+    	}
+    	return methodName;
     }
 
 }

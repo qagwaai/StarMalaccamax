@@ -11,15 +11,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
-import com.googlecode.objectify.annotation.Embed;
-import com.googlecode.objectify.annotation.Entity;
 
 /**
  * @author pgirard
  * 
  */
 @SuppressWarnings("serial")
-@Embed
 public final class CaptainSkills implements IsSerializable, Serializable, Model {
     /**
 	 * 

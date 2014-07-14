@@ -10,6 +10,7 @@ import java.io.Serializable;
 
 import com.google.code.twig.annotation.Embedded;
 import com.google.gwt.user.client.rpc.IsSerializable;
+import com.googlecode.objectify.annotation.Container;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Index;
 
@@ -50,12 +51,14 @@ public final class CaptainDTO implements IsSerializable, Serializable, Captain {
 	 * 
 	 */
     @Embedded
+    @Container
     private CaptainSkills skills = new CaptainSkills();
 
     /**
 	 * 
 	 */
     @Embedded
+    @Container
     private CaptainAttributes attributes = new CaptainAttributes();
 
     /**

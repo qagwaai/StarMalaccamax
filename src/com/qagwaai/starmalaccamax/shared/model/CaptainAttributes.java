@@ -11,14 +11,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
-import com.googlecode.objectify.annotation.Embed;
 
 /**
  * @author pgirard
  * 
  */
 @SuppressWarnings("serial")
-@Embed
 public final class CaptainAttributes implements IsSerializable, Serializable, Model {
     /**
 	 * 

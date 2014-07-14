@@ -16,7 +16,7 @@ import java.util.Map;
 import com.google.code.twig.annotation.Embedded;
 import com.google.code.twig.annotation.Index;
 import com.google.gwt.user.client.rpc.IsSerializable;
-import com.googlecode.objectify.annotation.EmbedMap;
+import com.googlecode.objectify.annotation.Container;
 import com.googlecode.objectify.annotation.Entity;
 
 /**
@@ -43,7 +43,7 @@ public final class MarketDTO implements IsSerializable, Serializable, Market {
 	 * 
 	 */
     @Embedded
-    @EmbedMap
+    @Container
     private Map<String, MarketCommodityDTO> commodities = new HashMap<String, MarketCommodityDTO>();
 
     /**

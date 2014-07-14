@@ -6,24 +6,41 @@
  */
 package com.qagwaai.starmalaccamax.server.dao.objectify;
 
-import java.util.ArrayList;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertTrue;
+import static org.reflections.ReflectionUtils.getAllFields;
+import static org.reflections.ReflectionUtils.withAnnotation;
+import static org.reflections.ReflectionUtils.withModifier;
 
-import junit.framework.Assert;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Set;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.reflections.Reflections;
+import org.reflections.scanners.ResourcesScanner;
+import org.reflections.scanners.SubTypesScanner;
+import org.reflections.util.ClasspathHelper;
+import org.reflections.util.ConfigurationBuilder;
+import org.reflections.util.FilterBuilder;
 
 import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import com.google.appengine.tools.development.testing.LocalUserServiceTestConfig;
-import com.qagwaai.starmalaccamax.server.dao.JumpGateDAO;
 import com.qagwaai.starmalaccamax.server.dao.DAOFactory;
+import com.qagwaai.starmalaccamax.server.dao.JumpGateDAO;
+import com.qagwaai.starmalaccamax.shared.model.Filter;
 import com.qagwaai.starmalaccamax.shared.model.JumpGate;
 import com.qagwaai.starmalaccamax.shared.model.JumpGateDTO;
-import com.qagwaai.starmalaccamax.shared.model.Filter;
 import com.qagwaai.starmalaccamax.shared.model.SimpleFilterItem;
-import com.qagwaai.starmalaccamax.shared.model.UserDTO;
 
 /**
  * @author pgirard
@@ -47,8 +64,9 @@ public final class JumpGateDataTest {
 		int ownerId = 0;
 		for (int i = 0; i < 100; i++) {
 			JumpGateDTO ss = new JumpGateDTO();
-			ss.setSolarSystem1Id(Long.valueOf(ownerId++));
-			Assert.assertNotNull(ss);
+			ss.setSolarSystem1Id(Long.valueOf(ownerId));
+			ss.setSolarSystem2Id(Long.valueOf(ownerId++));
+			assertNotNull(ss);
 			dao.addJumpGate(ss);
 			if (ownerId > 15) {
 				ownerId = 0;
@@ -85,19 +103,19 @@ public final class JumpGateDataTest {
 	public void testCreateAndLoad() throws Exception {
 		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
 		JumpGateDAO dao = factory.getJumpGateDAO();
-		Assert.assertNotNull(dao);
+		assertNotNull(dao);
 
 		JumpGateDTO ss = new JumpGateDTO();
-		Assert.assertNotNull(ss);
+		assertNotNull(ss);
 		ss.setSolarSystem1Id(Long.valueOf(1));
 
 		JumpGate addedSS = dao.addJumpGate(ss);
-		Assert.assertNotNull(addedSS);
+		assertNotNull(addedSS);
 
 		JumpGate foundSS = dao.getJumpGate(addedSS.getId());
-		Assert.assertNotNull(foundSS);
-		Assert.assertNotNull(addedSS.getId());
-		Assert.assertEquals(foundSS.getId(), addedSS.getId());
+		assertNotNull(foundSS);
+		assertNotNull(addedSS.getId());
+		assertEquals(foundSS.getId(), addedSS.getId());
 	}
 
 	/**
@@ -109,23 +127,23 @@ public final class JumpGateDataTest {
 	public void testGetJumpGates() throws Exception {
 		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
 		JumpGateDAO dao = factory.getJumpGateDAO();
-		Assert.assertNotNull(dao);
+		assertNotNull(dao);
 
 		JumpGateDTO ss = new JumpGateDTO();
-		Assert.assertNotNull(ss);
+		assertNotNull(ss);
 		ss.setSolarSystem1Id(Long.valueOf(1));
 		JumpGateDTO ss2 = new JumpGateDTO();
-		Assert.assertNotNull(ss2);
+		assertNotNull(ss2);
 		ss2.setSolarSystem1Id(Long.valueOf(2));
 
 		JumpGate addedSS = dao.addJumpGate(ss);
-		Assert.assertNotNull(addedSS);
+		assertNotNull(addedSS);
 		JumpGate added2SS = dao.addJumpGate(ss2);
-		Assert.assertNotNull(added2SS);
+		assertNotNull(added2SS);
 
 		ArrayList<JumpGateDTO> found = dao.getAllJumpGates(0, 15, "");
 
-		Assert.assertEquals(2, found.size());
+		assertEquals(2, found.size());
 	}
 
 	/**
@@ -137,18 +155,18 @@ public final class JumpGateDataTest {
 	public void testFilter() throws Exception {
 		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
 		JumpGateDAO dao = factory.getJumpGateDAO();
-		Assert.assertNotNull(dao);
+		assertNotNull(dao);
 		addLotsOfRecords(dao);
 
 		SimpleFilterItem filter = new SimpleFilterItem();
-		filter.setField("solarSystem1Id");
+		filter.setField("solarSystemId1");
 		filter.setValue("10");
 		ArrayList<Filter> filterAll = new ArrayList<Filter>();
 		filterAll.add(filter);
 
-		ArrayList<JumpGateDTO> found = dao.getAllJumpGates(0, 2000, filterAll, "solarSystem1Id");
-		Assert.assertEquals(found.get(0).getSolarSystem1Id(), Long.valueOf(50));
-		Assert.assertTrue(found.size() > 1);
+		ArrayList<JumpGateDTO> found = dao.getAllJumpGates(0, 2000, filterAll, "solarSystemId1");
+		assertEquals(found.get(0).getSolarSystem1Id(), Long.valueOf(10));
+		assertTrue(found.size() > 1);
 	}
 
 	/**
@@ -160,11 +178,12 @@ public final class JumpGateDataTest {
 	public void testSort() throws Exception {
 		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
 		JumpGateDAO dao = factory.getJumpGateDAO();
-		Assert.assertNotNull(dao);
+		assertNotNull(dao);
 		addLotsOfRecords(dao);
 
-		ArrayList<JumpGateDTO> found = dao.getAllJumpGates(0, 2000, "-solarSystem1Id");
-		Assert.assertNotSame(1L, found.get(0).getId());
+		ArrayList<JumpGateDTO> found = dao.getAllJumpGates(0, 2000, "-solarSystemId1");
+		//ArrayList<JumpGateDTO> found = dao.getAllJumpGates();
+		assertNotSame(1L, found.get(0).getId());
 
 	}
 
@@ -177,18 +196,18 @@ public final class JumpGateDataTest {
 	public void testRemove() throws Exception {
 		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
 		JumpGateDAO dao = factory.getJumpGateDAO();
-		Assert.assertNotNull(dao);
+		assertNotNull(dao);
 
 		JumpGateDTO ss = new JumpGateDTO();
-		Assert.assertNotNull(ss);
+		assertNotNull(ss);
 		ss.setSolarSystem1Id(Long.valueOf(50));
 
 		JumpGate addedSS = dao.addJumpGate(ss);
-		Assert.assertNotNull(addedSS);
+		assertNotNull(addedSS);
 
 		boolean removed = dao.removeJumpGate(ss);
 
-		Assert.assertTrue(removed);
+		assertTrue(removed);
 	}
 
 	/**
@@ -200,22 +219,22 @@ public final class JumpGateDataTest {
 	public void testTotal() throws Exception {
 		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
 		JumpGateDAO dao = factory.getJumpGateDAO();
-		Assert.assertNotNull(dao);
+		assertNotNull(dao);
 
 		JumpGateDTO ss = new JumpGateDTO();
-		Assert.assertNotNull(ss);
+		assertNotNull(ss);
 		ss.setSolarSystem1Id(Long.valueOf(50));
 		JumpGateDTO ss2 = new JumpGateDTO();
-		Assert.assertNotNull(ss2);
+		assertNotNull(ss2);
 		ss2.setSolarSystem1Id(Long.valueOf(50));
 
 		JumpGate addedSS = dao.addJumpGate(ss);
-		Assert.assertNotNull(addedSS);
+		assertNotNull(addedSS);
 		JumpGate added2SS = dao.addJumpGate(ss2);
-		Assert.assertNotNull(added2SS);
+		assertNotNull(added2SS);
 
 		int total = dao.getTotalJumpGates();
-		Assert.assertEquals(2, total);
+		assertEquals(2, total);
 	}
 
 	/**
@@ -227,19 +246,19 @@ public final class JumpGateDataTest {
 	public void testUpdate() throws Exception {
 		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
 		JumpGateDAO dao = factory.getJumpGateDAO();
-		Assert.assertNotNull(dao);
+		assertNotNull(dao);
 
 		JumpGateDTO ss = new JumpGateDTO();
-		Assert.assertNotNull(ss);
+		assertNotNull(ss);
 		ss.setSolarSystem1Id(Long.valueOf(50));
 
 		JumpGate addedSS = dao.addJumpGate(ss);
-		Assert.assertNotNull(addedSS);
+		assertNotNull(addedSS);
 
 		ss.setSolarSystem1Id(Long.valueOf(55));
 		JumpGate updatedSS = dao.updateJumpGate(ss);
-		Assert.assertEquals(addedSS.getSolarSystem1Id(), updatedSS.getSolarSystem1Id());
-		Assert.assertNotNull(updatedSS.getId());
+		assertEquals(addedSS.getSolarSystem1Id(), updatedSS.getSolarSystem1Id());
+		assertNotNull(updatedSS.getId());
 	}
 	
 	/**
@@ -251,14 +270,14 @@ public final class JumpGateDataTest {
 	public void testGetAllJumpGates() throws Exception {
 		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
 		JumpGateDAO dao = factory.getJumpGateDAO();
-		Assert.assertNotNull(dao);
+		assertNotNull(dao);
 		addLotsOfRecords(dao);
 
 		int total = dao.getTotalJumpGates();
 
 		ArrayList<JumpGateDTO> found = dao.getAllJumpGates();
 
-		Assert.assertEquals(total, found.size());
+		assertEquals(total, found.size());
 	}
 	
 	/**
@@ -270,7 +289,7 @@ public final class JumpGateDataTest {
 	public void testDeleteAllJumpGates() throws Exception {
 		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
 		JumpGateDAO dao = factory.getJumpGateDAO();
-		Assert.assertNotNull(dao);
+		assertNotNull(dao);
 		addLotsOfRecords(dao);
 
 		int total = dao.getTotalJumpGates();
@@ -278,7 +297,7 @@ public final class JumpGateDataTest {
 
 		ArrayList<JumpGateDTO> found = dao.getAllJumpGates();
 
-		Assert.assertEquals(0, found.size());
+		assertEquals(0, found.size());
 	}
 	
 	/**
@@ -290,22 +309,94 @@ public final class JumpGateDataTest {
 	public void testGetTotalJumpGatesWithFilter() throws Exception {
 		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
 		JumpGateDAO dao = factory.getJumpGateDAO();
-		Assert.assertNotNull(dao);
+		assertNotNull(dao);
 		addLotsOfRecords(dao);
 
 		SimpleFilterItem filter = new SimpleFilterItem();
-		filter.setField("solarSystem1Id");
-		filter.setValue("50");
+		filter.setField("solarSystemId1");
+		filter.setValue("5");
 		ArrayList<Filter> filterAll = new ArrayList<Filter>();
 		filterAll.add(filter);
 
-		ArrayList<JumpGateDTO> found = dao.getAllJumpGates(0, 2000, filterAll, "solarSystem1Id");
-		Assert.assertEquals(found.get(0).getSolarSystem1Id(), Long.valueOf(50));
-		Assert.assertEquals(found.size(), 1);
+		ArrayList<JumpGateDTO> found = dao.getAllJumpGates(0, 2000, filterAll, "solarSystemId1");
+		assertEquals(found.get(0).getSolarSystem1Id(), Long.valueOf(5));
+		assertTrue((found.size() > 1));
 		
 		int foundCount = dao.getTotalJumpGatesWithFilter(filterAll);
 		
-		Assert.assertEquals(found.size(), foundCount);
+		assertEquals(found.size(), foundCount);
 	}
 
+	
+	
+	/**
+	 * 
+	 * @throws Exception
+	 *             if the test fails
+	 */
+	@Test
+	public void testGetTotalJumpGatesWithAllFilters() throws Exception {
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
+		JumpGateDAO dao = factory.getJumpGateDAO();
+		assertNotNull(dao);
+		addLotsOfRecords(dao);
+
+		Reflections reflections = 
+				new Reflections(new ConfigurationBuilder()
+					.setScanners(new SubTypesScanner(false /* don't exclude Object.class */), new ResourcesScanner())
+					.setUrls(ClasspathHelper.forPackage("com.qagwaai.starmalaccamax.shared.model"))
+					.filterInputsBy(new FilterBuilder().include(FilterBuilder.prefix("com.qagwaai.starmalaccamax.shared.model.JumpGateDTO"))));
+		Set<Class<? extends Object>> classes = reflections.getSubTypesOf(Object.class);
+		ArrayList<Class<? extends Object>> sortedList = new ArrayList<Class<? extends Object>>(classes);
+		Collections.sort(sortedList, new Comparator<Class<? extends Object>>(){
+
+			@Override
+			public int compare(Class<? extends Object> o1,
+					Class<? extends Object> o2) {
+				String str1 = o1.getName();
+				String str2 = o2.getName();
+				int x = String.CASE_INSENSITIVE_ORDER.compare(str1, str2);
+				if (x == 0) {
+					x = str1.compareTo(str2);
+				}
+				return x;
+			}});
+		
+		for (Class clazz : sortedList) {
+			Set<Field> fields = getAllFields(clazz, withModifier(Modifier.PRIVATE), withAnnotation(com.googlecode.objectify.annotation.Index.class));
+			for (Field field : fields) {
+				
+				Class returnType = field.getType();
+				if (returnType.isPrimitive() || returnType.getName().equalsIgnoreCase("java.lang.String") || returnType.getName().equalsIgnoreCase("java.lang.Long")) {
+					// continue
+				} else {
+					// next
+					continue;
+				}
+				SimpleFilterItem filter = new SimpleFilterItem();
+				filter.setField(field.getName());
+				filter.setValue("5");
+				ArrayList<Filter> filterAll = new ArrayList<Filter>();
+				filterAll.add(filter);
+
+				ArrayList<JumpGateDTO> found = null;
+				if (field.getName().equals("id")) {
+					found = dao.getAllJumpGates(0, 2000, filterAll, "__key__");
+				} else {
+					found = dao.getAllJumpGates(0, 2000, filterAll, field.getName());
+				}
+				
+				Method getValueMethod = clazz.getMethod(JumpGateDTO.getFieldGetter(field.getName()), null);
+				Object fieldObject = getValueMethod.invoke(found.get(0), null);
+				//Object fieldObject = field.get(found.get(0));
+				assertEquals(field.getName() + " search does not exist", Long.valueOf(5), fieldObject);
+				//assertTrue((found.size() == 1));
+				
+				int foundCount = dao.getTotalJumpGatesWithFilter(filterAll);
+				
+				assertEquals(found.size(), foundCount);				
+			}
+		}
+
+	}
 }

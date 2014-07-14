@@ -14,11 +14,13 @@
 	<classpathentry kind="lib" path="war/WEB-INF/lib/slf4j-api-1.7.2.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/smartgwt-4.0.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/smartgwt-skins-4.0.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/objectify-4.0rc2.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
 	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER/v2"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/App_Engine_Testing_1.9.6"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/objectify-5.0.3.jar"/>
+	<classpathentry kind="lib" path="lib/reflections-0.9.9-RC1.jar"/>
+	<classpathentry kind="lib" path="lib/javassist-3.16.1-GA.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>
