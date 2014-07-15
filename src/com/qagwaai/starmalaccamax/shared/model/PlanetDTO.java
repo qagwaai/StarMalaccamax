@@ -25,11 +25,13 @@ public final class PlanetDTO implements IsSerializable, Serializable, Planet {
 	 */
     @com.google.code.twig.annotation.Id
     @com.googlecode.objectify.annotation.Id
+    @com.googlecode.objectify.annotation.Index
     private Long id;
     /**
 	 * 
 	 */
     @Index
+    @com.googlecode.objectify.annotation.Index
     private Long solarSystemId;
     /**
 	 * 
@@ -70,6 +72,7 @@ public final class PlanetDTO implements IsSerializable, Serializable, Planet {
     /**
 	 * 
 	 */
+    @com.googlecode.objectify.annotation.Index
     private boolean isGasGiant;
     /**
 	 * 
@@ -568,5 +571,17 @@ public final class PlanetDTO implements IsSerializable, Serializable, Planet {
     public void setOrbitYRel(int yrel) {
         orbitYRel = yrel;
     }
-
+    
+    public static String getFieldGetter(String fieldName) {
+    	String methodName = null;
+    	
+    	if (fieldName.equals("id")) {
+    		methodName = "getId";
+    	} else if (fieldName.equals("solarSystemId")) {
+    		methodName = "getSolarSystemId";
+    	} else if (fieldName.equals("isGasGiant")) {
+    		methodName = "isGasGiant";
+    	}
+    	return methodName;
+    }
 }

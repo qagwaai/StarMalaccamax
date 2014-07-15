@@ -3,14 +3,8 @@ package com.qagwaai.starmalaccamax.server.dao.objectify;
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
-import com.google.appengine.api.datastore.Query.FilterOperator;
-import com.google.code.twig.ObjectDatastore;
-import com.google.code.twig.annotation.AnnotationObjectDatastore;
-import com.google.common.collect.Lists;
 import com.googlecode.objectify.Key;
-import com.googlecode.objectify.Result;
 import com.qagwaai.starmalaccamax.server.dao.DAOException;
 import com.qagwaai.starmalaccamax.server.dao.UserDAO;
 import com.qagwaai.starmalaccamax.shared.model.UserDTO;

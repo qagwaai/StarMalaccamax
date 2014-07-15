@@ -10,7 +10,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import com.google.code.twig.annotation.Embedded;
-import com.google.code.twig.annotation.Id;
 import com.google.gwt.user.client.rpc.IsSerializable;
 import com.googlecode.objectify.annotation.Entity;
 
@@ -43,11 +42,13 @@ public final class ShipDTO implements IsSerializable, Serializable, Ship {
 	 */
     @com.google.code.twig.annotation.Id
     @com.googlecode.objectify.annotation.Id
+    @com.googlecode.objectify.annotation.Index
     private Long id;
 
     /**
 	 * 
 	 */
+    @com.googlecode.objectify.annotation.Index
     private Long ownerId;
     /**
 	 * 
@@ -220,6 +221,16 @@ public final class ShipDTO implements IsSerializable, Serializable, Ship {
         return "ShipDTO [id=" + id + ", location=" + location + ", name=" + name + ", ownerId=" + ownerId
             + ", shipAttributes=" + shipAttributes + ", shipCargo=" + shipCargo + ", shipTypeId=" + shipTypeId
             + ", travelStatus=" + travelStatus + "]";
+    }
+    public static String getFieldGetter(String fieldName) {
+    	String methodName = null;
+    	
+    	if (fieldName.equals("id")) {
+    		methodName = "getId";
+    	} else if (fieldName.equals("ownerId")) {
+    		methodName = "getOwnerId";
+    	}
+    	return methodName;
     }
 
 }

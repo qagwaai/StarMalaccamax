@@ -16,7 +16,6 @@ import java.util.Map;
 import com.google.code.twig.annotation.Embedded;
 import com.google.code.twig.annotation.Index;
 import com.google.gwt.user.client.rpc.IsSerializable;
-import com.googlecode.objectify.annotation.Container;
 import com.googlecode.objectify.annotation.Entity;
 
 /**
@@ -32,23 +31,26 @@ public final class MarketDTO implements IsSerializable, Serializable, Market {
 	 */
     @com.google.code.twig.annotation.Id
     @com.googlecode.objectify.annotation.Id
+    @Index
+    @com.googlecode.objectify.annotation.Index
     private Long id;
     /**
 	 * 
 	 */
-    @Index
+    @com.googlecode.objectify.annotation.Index
     private Long planetId;
 
     /**
 	 * 
 	 */
     @Embedded
-    @Container
+    //@Container
     private Map<String, MarketCommodityDTO> commodities = new HashMap<String, MarketCommodityDTO>();
 
     /**
 	 * 
 	 */
+    @Index
     private Date lastVisited;
 
     /**
@@ -157,6 +159,17 @@ public final class MarketDTO implements IsSerializable, Serializable, Market {
         }
         builder.append("]");
         return builder.toString();
+    }
+    
+    public static String getFieldGetter(String fieldName) {
+    	String methodName = null;
+    	
+    	if (fieldName.equals("id")) {
+    		methodName = "getId";
+    	} else if (fieldName.equals("planetId")) {
+    		methodName = "getPlanetId";
+    	} 
+    	return methodName;
     }
 
 }

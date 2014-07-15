@@ -111,7 +111,7 @@ public interface MarketDAO {
      *            the planets to look for
      * @return a list of markets for those queried planets
      */
-    ArrayList<MarketDTO> getMarketsForPlanets(ArrayList<Long> planetIds);
+    ArrayList<MarketDTO> getMarketsForPlanets(ArrayList<Long> planetIds) throws DAOException;
 
     /**
      * 

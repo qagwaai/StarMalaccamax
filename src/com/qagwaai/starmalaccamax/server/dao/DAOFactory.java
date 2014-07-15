@@ -6,6 +6,14 @@
  */
 package com.qagwaai.starmalaccamax.server.dao;
 
+import java.util.logging.Logger;
+
+import com.google.appengine.api.search.GetIndexesRequest;
+import com.google.appengine.api.search.GetResponse;
+import com.google.appengine.api.search.Index;
+import com.google.appengine.api.search.SearchService;
+import com.google.appengine.api.search.SearchServiceFactory;
+import com.qagwaai.starmalaccamax.server.ChannelServiceImpl;
 import com.qagwaai.starmalaccamax.server.dao.objectify.ObjectifyDAOFactory;
 import com.qagwaai.starmalaccamax.server.dao.twig.TwigDAOFactory;
 
@@ -27,7 +35,22 @@ public abstract class DAOFactory {
     public static final int MYSQL = 2;
     
     public static final int OBJECTIFY = 3;
+    private static Logger log = Logger.getLogger(ChannelServiceImpl.class.getName());
+    
+    static {
+		
+		  SearchService searchService = SearchServiceFactory.getSearchService();
+		  GetResponse<Index> response = searchService.getIndexes(
+		      GetIndexesRequest.newBuilder());
+		  log.finest("Index list:");
+		  for (Index index : response) {
+			  log.finest(index.getName());
+		    //index.getNamespace();
+		    //index.search("query");
+		  }
 
+    }
+    
     /**
      * 
      * @param whichFactory
@@ -37,12 +60,18 @@ public abstract class DAOFactory {
     public static DAOFactory getDAOFactory(final int whichFactory) {
 
         switch (whichFactory) {
-            case TWIG:
+            case TWIG: 
+            {
+            	log.finest("DAOFactory:Using Twig");
                 return new TwigDAOFactory();
+            }
             case MYSQL:
                 return null;
             default:
+            {
+            	log.finest("DAOFactory:Using Objectify");
                 return new ObjectifyDAOFactory();
+            }
         }
     }
 

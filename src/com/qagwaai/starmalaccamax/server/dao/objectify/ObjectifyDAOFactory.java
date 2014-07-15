@@ -9,7 +9,6 @@ package com.qagwaai.starmalaccamax.server.dao.objectify;
 import java.util.logging.Logger;
 
 import com.googlecode.objectify.ObjectifyService;
-import com.qagwaai.starmalaccamax.server.CaptainServiceImpl;
 import com.qagwaai.starmalaccamax.server.dao.CaptainDAO;
 import com.qagwaai.starmalaccamax.server.dao.DAOFactory;
 import com.qagwaai.starmalaccamax.server.dao.GameActivityDAO;
@@ -23,31 +22,18 @@ import com.qagwaai.starmalaccamax.server.dao.ShipTypeDAO;
 import com.qagwaai.starmalaccamax.server.dao.SolarSystemDAO;
 import com.qagwaai.starmalaccamax.server.dao.StarDAO;
 import com.qagwaai.starmalaccamax.server.dao.UserDAO;
-import com.qagwaai.starmalaccamax.shared.model.AppErrorDTO;
-import com.qagwaai.starmalaccamax.shared.model.CaptainAttributes;
 import com.qagwaai.starmalaccamax.shared.model.CaptainDTO;
-import com.qagwaai.starmalaccamax.shared.model.CaptainSkills;
-import com.qagwaai.starmalaccamax.shared.model.CaptainSolarSystemDTO;
 import com.qagwaai.starmalaccamax.shared.model.ChatRoomDTO;
 import com.qagwaai.starmalaccamax.shared.model.ClosestDTO;
-import com.qagwaai.starmalaccamax.shared.model.CountryDTO;
-import com.qagwaai.starmalaccamax.shared.model.DistanceDTO;
-import com.qagwaai.starmalaccamax.shared.model.DurationDTO;
 import com.qagwaai.starmalaccamax.shared.model.GameEventDTO;
 import com.qagwaai.starmalaccamax.shared.model.JobDTO;
 import com.qagwaai.starmalaccamax.shared.model.JumpGateDTO;
-import com.qagwaai.starmalaccamax.shared.model.LocationDTO;
-import com.qagwaai.starmalaccamax.shared.model.MarketCommodityDTO;
 import com.qagwaai.starmalaccamax.shared.model.MarketDTO;
-import com.qagwaai.starmalaccamax.shared.model.MarketOpportunityForShipDTO;
 import com.qagwaai.starmalaccamax.shared.model.PlanetDTO;
-import com.qagwaai.starmalaccamax.shared.model.PlanetDistanceDTO;
-import com.qagwaai.starmalaccamax.shared.model.SatelliteDTO;
 import com.qagwaai.starmalaccamax.shared.model.ShipDTO;
 import com.qagwaai.starmalaccamax.shared.model.ShipTypeDTO;
 import com.qagwaai.starmalaccamax.shared.model.SolarSystemDTO;
 import com.qagwaai.starmalaccamax.shared.model.StarDTO;
-import com.qagwaai.starmalaccamax.shared.model.TravelVectorDTO;
 import com.qagwaai.starmalaccamax.shared.model.UserDTO;
 
 /**
@@ -59,7 +45,7 @@ public final class ObjectifyDAOFactory extends DAOFactory {
 	private static Logger log = Logger.getLogger(ObjectifyDAOFactory.class.getName());
 	
 	static {
-		log.severe("Registering classes");
+		log.severe("StarMalaccamax Objectify Registering classes");
     	try {
 			//ObjectifyService.register(AppErrorDTO.class);
 			ObjectifyService.register(CaptainDTO.class);
