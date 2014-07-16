@@ -23,10 +23,12 @@ public final class StarDTO implements IsSerializable, Serializable, Star {
 	 */
     @com.google.code.twig.annotation.Id
     @com.googlecode.objectify.annotation.Id
+    @com.googlecode.objectify.annotation.Index
     private Long id;
     /**
 	 * 
 	 */
+    @com.googlecode.objectify.annotation.Index
     private Long solarSystemId;
     /**
 	 * 
@@ -281,6 +283,16 @@ public final class StarDTO implements IsSerializable, Serializable, Star {
         builder.append(spectralTypeDec);
         builder.append("]");
         return builder.toString();
+    }
+    public static String getFieldGetter(String fieldName) {
+    	String methodName = null;
+    	
+    	if (fieldName.equals("id")) {
+    		methodName = "getId";
+    	} else if (fieldName.equals("solarSystemId")) {
+    		methodName = "getSolarSystemId";
+    	}
+    	return methodName;
     }
 
 }

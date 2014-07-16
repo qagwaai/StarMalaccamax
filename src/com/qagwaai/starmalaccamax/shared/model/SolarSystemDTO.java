@@ -24,6 +24,7 @@ public final class SolarSystemDTO implements IsSerializable, Serializable, Solar
 	 */
     @com.google.code.twig.annotation.Id
     @com.googlecode.objectify.annotation.Id
+    @com.googlecode.objectify.annotation.Index
     private Long id;
     /**
 	 * 
@@ -40,6 +41,7 @@ public final class SolarSystemDTO implements IsSerializable, Serializable, Solar
     /**
 	 * 
 	 */
+    @com.googlecode.objectify.annotation.Index
     private String name;
     /**
 	 * 
@@ -52,14 +54,17 @@ public final class SolarSystemDTO implements IsSerializable, Serializable, Solar
     /**
 	 * 
 	 */
+    @com.googlecode.objectify.annotation.Index
     private double x;
     /**
 	 * 
 	 */
+    @com.googlecode.objectify.annotation.Index
     private double y;
     /**
 	 * 
 	 */
+    @com.googlecode.objectify.annotation.Index
     private double z;
 
     /**
@@ -417,6 +422,24 @@ public final class SolarSystemDTO implements IsSerializable, Serializable, Solar
         builder.append(z);
         builder.append("]");
         return builder.toString();
+    }
+
+    public static String getFieldGetter(String fieldName) {
+    	String methodName = null;
+    	
+    	if (fieldName.equals("id")) {
+    		methodName = "getId";
+    	} else if (fieldName.equals("name")) {
+    		methodName = "getName";
+    	} else if (fieldName.equals("x")) {
+    		methodName = "getX";
+    	} else if (fieldName.equals("y")) {
+    	 	methodName = "getY";
+    	} else if (fieldName.equals("z")) {
+    		methodName = "getZ";
+    	}
+    	
+    	return methodName;
     }
 
 }

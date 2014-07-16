@@ -23,20 +23,24 @@ public final class ClosestDTO implements Closest, IsSerializable, Serializable {
 	 */
     @com.google.code.twig.annotation.Id
     @com.googlecode.objectify.annotation.Id
+    @com.googlecode.objectify.annotation.Index
     private Long id;
 
     /**
 	 * 
 	 */
+    @com.googlecode.objectify.annotation.Index
     private Long originId;
     /**
 	 * 
 	 */
+    @com.googlecode.objectify.annotation.Index
     private int numJumps;
 
     /**
 	 * 
 	 */
+    @com.googlecode.objectify.annotation.Index
     private Long toId;
 
     /**
@@ -119,6 +123,20 @@ public final class ClosestDTO implements Closest, IsSerializable, Serializable {
         builder.append(toId);
         builder.append("]");
         return builder.toString();
+    }
+
+    public static String getFieldGetter(String fieldName) {
+    	String methodName = null;
+    	
+    	if (fieldName.equals("id")) {
+    		methodName = "getId";
+    	} else if (fieldName.equals("originId")) {
+    		methodName = "getSolarSystemId";
+    	} else if (fieldName.equals("toId")) {
+    		methodName = "getToSolarSystemId";
+    	}
+    	
+    	return methodName;
     }
 
 }
