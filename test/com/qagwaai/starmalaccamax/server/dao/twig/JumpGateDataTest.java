@@ -21,7 +21,6 @@ import org.junit.Test;
 import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import com.google.appengine.tools.development.testing.LocalUserServiceTestConfig;
-import com.qagwaai.starmalaccamax.client.Application;
 import com.qagwaai.starmalaccamax.client.admin.util.DelimitedToRecord;
 import com.qagwaai.starmalaccamax.server.dao.DAOFactory;
 import com.qagwaai.starmalaccamax.server.dao.JumpGateDAO;
@@ -70,7 +69,7 @@ public final class JumpGateDataTest {
 	 */
 	@Test
 	public void testBulkLoad() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		JumpGateDAO dao = factory.getJumpGateDAO();
 		Assert.assertNotNull(dao);
 
@@ -104,7 +103,7 @@ public final class JumpGateDataTest {
 	 */
 	@Test
 	public void testCreateAndLoad() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		JumpGateDAO dao = factory.getJumpGateDAO();
 		Assert.assertNotNull(dao);
 
@@ -127,7 +126,7 @@ public final class JumpGateDataTest {
 	 */
 	@Test
 	public void testGetJumpGates() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		JumpGateDAO dao = factory.getJumpGateDAO();
 		Assert.assertNotNull(dao);
 
@@ -155,7 +154,7 @@ public final class JumpGateDataTest {
 	 */
 	@Test
 	public void testIdFilter() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		JumpGateDAO dao = factory.getJumpGateDAO();
 		Assert.assertNotNull(dao);
 
@@ -195,7 +194,7 @@ public final class JumpGateDataTest {
 	 */
 	@Test
 	public void testRemove() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		JumpGateDAO dao = factory.getJumpGateDAO();
 		Assert.assertNotNull(dao);
 
@@ -218,7 +217,7 @@ public final class JumpGateDataTest {
 	 */
 	@Test
 	public void testSolarSystem1Sort() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		JumpGateDAO dao = factory.getJumpGateDAO();
 		Assert.assertNotNull(dao);
 
@@ -252,7 +251,7 @@ public final class JumpGateDataTest {
 	 */
 	@Test
 	public void testTotal() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		JumpGateDAO dao = factory.getJumpGateDAO();
 		Assert.assertNotNull(dao);
 
@@ -279,7 +278,7 @@ public final class JumpGateDataTest {
 	 */
 	@Test
 	public void testUpdate() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		JumpGateDAO dao = factory.getJumpGateDAO();
 		Assert.assertNotNull(dao);
 

@@ -17,7 +17,6 @@ import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import com.google.appengine.tools.development.testing.LocalUserServiceTestConfig;
 import com.google.gson.Gson;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import com.qagwaai.starmalaccamax.client.Application;
 import com.qagwaai.starmalaccamax.client.service.SolarSystemService;
 import com.qagwaai.starmalaccamax.client.service.action.AbstractPolyAction;
 import com.qagwaai.starmalaccamax.client.service.action.AbstractPolyResponse;
@@ -59,6 +58,7 @@ import com.qagwaai.starmalaccamax.client.service.action.UpdateClosest;
 import com.qagwaai.starmalaccamax.client.service.action.UpdateClosestResponse;
 import com.qagwaai.starmalaccamax.client.service.action.UpdateSolarSystem;
 import com.qagwaai.starmalaccamax.client.service.action.UpdateSolarSystemResponse;
+import com.qagwaai.starmalaccamax.server.config.Configuration;
 import com.qagwaai.starmalaccamax.server.dao.CaptainDAO;
 import com.qagwaai.starmalaccamax.server.dao.DAOException;
 import com.qagwaai.starmalaccamax.server.dao.DAOFactory;
@@ -168,7 +168,7 @@ public final class SolarSystemServiceImpl extends RemoteServiceServlet implement
     private GetLocationForNewCaptainResponse executeGetLocationForNewCaptain(final GetLocationForNewCaptain action)
         throws ServiceException {
         GetLocationForNewCaptainResponse response = new GetLocationForNewCaptainResponse();
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         SolarSystemDAO solarSystemDAO = factory.getSolarSystemDAO();
         PlanetDAO planetDAO = factory.getPlanetDAO();
         Random r = new Random(System.currentTimeMillis());
@@ -213,7 +213,7 @@ public final class SolarSystemServiceImpl extends RemoteServiceServlet implement
     private AddClosestResponse executeAddClosest(final AddClosest action) throws ServiceException {
         AddClosestResponse response = new AddClosestResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         SolarSystemDAO closestDAO = factory.getSolarSystemDAO();
         ClosestDTO foundClosest = null;
         try {
@@ -238,7 +238,7 @@ public final class SolarSystemServiceImpl extends RemoteServiceServlet implement
     private AddSolarSystemResponse executeAddSolarSystem(final AddSolarSystem action) throws ServiceException {
         AddSolarSystemResponse response = new AddSolarSystemResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         SolarSystemDAO solarSystemDAO = factory.getSolarSystemDAO();
         SolarSystemDTO foundSolarSystem = null;
         try {
@@ -263,7 +263,7 @@ public final class SolarSystemServiceImpl extends RemoteServiceServlet implement
     private BulkAddClosestResponse executeBulkAddClosest(final BulkAddClosest action) throws ServiceException {
         BulkAddClosestResponse response = new BulkAddClosestResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         SolarSystemDAO closestDAO = factory.getSolarSystemDAO();
         try {
             closestDAO.bulkAddClosest(action.getClosests());
@@ -278,7 +278,7 @@ public final class SolarSystemServiceImpl extends RemoteServiceServlet implement
 
     private GetSolarSystemResponse executeGetSolarSystem(final GetSolarSystem action) throws ServiceException {
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         SolarSystemDAO solarSystemDAO = factory.getSolarSystemDAO();
         SolarSystemDTO foundSolarSystem = null;
         try {
@@ -317,7 +317,7 @@ public final class SolarSystemServiceImpl extends RemoteServiceServlet implement
         throws ServiceException {
         BulkAddSolarSystemResponse response = new BulkAddSolarSystemResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         SolarSystemDAO solarSystemDAO = factory.getSolarSystemDAO();
         try {
             solarSystemDAO.bulkAddSolarSystem(action.getSolarSystems());
@@ -341,7 +341,7 @@ public final class SolarSystemServiceImpl extends RemoteServiceServlet implement
      */
     private GetAllClosestsResponse executeGetAllClosests(final GetAllClosests action) throws ServiceException {
         GetAllClosestsResponse response = new GetAllClosestsResponse();
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         SolarSystemDAO closestDAO = factory.getSolarSystemDAO();
 
         ArrayList<ClosestDTO> foundClosests = null;
@@ -390,7 +390,7 @@ public final class SolarSystemServiceImpl extends RemoteServiceServlet implement
     private GetAllSolarSystemsResponse executeGetAllSolarSystems(final GetAllSolarSystems action)
         throws ServiceException {
         GetAllSolarSystemsResponse response = new GetAllSolarSystemsResponse();
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         SolarSystemDAO solarSystemDAO = factory.getSolarSystemDAO();
 
         ArrayList<SolarSystemDTO> foundSolarSystems = null;
@@ -442,7 +442,7 @@ public final class SolarSystemServiceImpl extends RemoteServiceServlet implement
         executeGetClosestPlanetsForPlanet(final GetClosestPlanetsForPlanet action) throws ServiceException {
         GetClosestPlanetsForPlanetResponse response = new GetClosestPlanetsForPlanetResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         SolarSystemDAO solarSystemDAO = factory.getSolarSystemDAO();
         ArrayList<PlanetDistanceDTO> foundClosests = null;
         try {
@@ -470,7 +470,7 @@ public final class SolarSystemServiceImpl extends RemoteServiceServlet implement
         throws ServiceException {
         GetClosestsForPlanetResponse response = new GetClosestsForPlanetResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         SolarSystemDAO solarSystemDAO = factory.getSolarSystemDAO();
         ArrayList<ClosestDTO> foundClosests = null;
         try {
@@ -497,7 +497,7 @@ public final class SolarSystemServiceImpl extends RemoteServiceServlet implement
     private GetSolarSystemsForCaptainsResponse
         executeGetSolarSystemsForCaptains(final GetSolarSystemsForCaptains action) throws ServiceException {
         GetSolarSystemsForCaptainsResponse response = new GetSolarSystemsForCaptainsResponse();
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         CaptainDAO captainDAO = factory.getCaptainDAO();
         ShipDAO shipDAO = factory.getShipDAO();
         SolarSystemDAO solarSystemDAO = factory.getSolarSystemDAO();
@@ -546,7 +546,7 @@ public final class SolarSystemServiceImpl extends RemoteServiceServlet implement
      */
     private RemoveAllClosestResponse executeRemoveAllClosest(final RemoveAllClosest action) throws ServiceException {
         RemoveAllClosestResponse response = new RemoveAllClosestResponse();
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         SolarSystemDAO solarSystemDAO = factory.getSolarSystemDAO();
         Boolean result = null;
         try {
@@ -571,7 +571,7 @@ public final class SolarSystemServiceImpl extends RemoteServiceServlet implement
     private RemoveAllSolarSystemsResponse executeRemoveAllSolarSystems(final RemoveAllSolarSystems action)
         throws ServiceException {
         RemoveAllSolarSystemsResponse response = new RemoveAllSolarSystemsResponse();
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         SolarSystemDAO solarSystemDAO = factory.getSolarSystemDAO();
         Boolean result = null;
         try {
@@ -596,7 +596,7 @@ public final class SolarSystemServiceImpl extends RemoteServiceServlet implement
     private RemoveClosestResponse executeRemoveClosest(final RemoveClosest action) throws ServiceException {
         RemoveClosestResponse response = new RemoveClosestResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         SolarSystemDAO closestDAO = factory.getSolarSystemDAO();
         // boolean foundClosest = false;
         try {
@@ -621,7 +621,7 @@ public final class SolarSystemServiceImpl extends RemoteServiceServlet implement
     private RemoveSolarSystemResponse executeRemoveSolarSystem(final RemoveSolarSystem action) throws ServiceException {
         RemoveSolarSystemResponse response = new RemoveSolarSystemResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         SolarSystemDAO solarSystemDAO = factory.getSolarSystemDAO();
         // boolean foundSolarSystem = false;
         try {
@@ -646,7 +646,7 @@ public final class SolarSystemServiceImpl extends RemoteServiceServlet implement
     private UpdateClosestResponse executeUpdateClosest(final UpdateClosest action) throws ServiceException {
         UpdateClosestResponse response = new UpdateClosestResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         SolarSystemDAO closestDAO = factory.getSolarSystemDAO();
         ClosestDTO foundClosest = null;
         try {
@@ -671,7 +671,7 @@ public final class SolarSystemServiceImpl extends RemoteServiceServlet implement
     private UpdateSolarSystemResponse executeUpdateSolarSystem(final UpdateSolarSystem action) throws ServiceException {
         UpdateSolarSystemResponse response = new UpdateSolarSystemResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         SolarSystemDAO solarSystemDAO = factory.getSolarSystemDAO();
         SolarSystemDTO foundSolarSystem = null;
         try {

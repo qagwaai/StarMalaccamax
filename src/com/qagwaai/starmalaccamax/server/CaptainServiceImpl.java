@@ -15,7 +15,6 @@ import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestC
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import com.google.appengine.tools.development.testing.LocalUserServiceTestConfig;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import com.qagwaai.starmalaccamax.client.Application;
 import com.qagwaai.starmalaccamax.client.service.CaptainService;
 import com.qagwaai.starmalaccamax.client.service.action.Action;
 import com.qagwaai.starmalaccamax.client.service.action.AddCaptain;
@@ -33,6 +32,7 @@ import com.qagwaai.starmalaccamax.client.service.action.RemoveCaptainResponse;
 import com.qagwaai.starmalaccamax.client.service.action.Response;
 import com.qagwaai.starmalaccamax.client.service.action.UpdateCaptain;
 import com.qagwaai.starmalaccamax.client.service.action.UpdateCaptainResponse;
+import com.qagwaai.starmalaccamax.server.config.Configuration;
 import com.qagwaai.starmalaccamax.server.dao.CaptainDAO;
 import com.qagwaai.starmalaccamax.server.dao.DAOException;
 import com.qagwaai.starmalaccamax.server.dao.DAOFactory;
@@ -102,7 +102,7 @@ public final class CaptainServiceImpl extends RemoteServiceServlet implements Ca
 
     private CaptainNameCheckResponse executeCaptainNameCheck(final CaptainNameCheck action) throws ServiceException {
         CaptainNameCheckResponse response = new CaptainNameCheckResponse();
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         CaptainDAO captainDAO = factory.getCaptainDAO();
 
         try {
@@ -125,7 +125,7 @@ public final class CaptainServiceImpl extends RemoteServiceServlet implements Ca
     private AddCaptainResponse executeAddCaptain(final AddCaptain action) throws ServiceException {
         AddCaptainResponse response = new AddCaptainResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         CaptainDAO captainDAO = factory.getCaptainDAO();
         CaptainDTO foundCaptain = null;
         try {
@@ -150,7 +150,7 @@ public final class CaptainServiceImpl extends RemoteServiceServlet implements Ca
      */
     private GetAllCaptainsResponse executeGetAllCaptains(final GetAllCaptains action) throws ServiceException {
         GetAllCaptainsResponse response = new GetAllCaptainsResponse();
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         CaptainDAO captainDAO = factory.getCaptainDAO();
 
         ArrayList<CaptainDTO> foundCaptains = null;
@@ -200,7 +200,7 @@ public final class CaptainServiceImpl extends RemoteServiceServlet implements Ca
 
         GetCaptainResponse response = new GetCaptainResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         CaptainDAO captainDAO = factory.getCaptainDAO();
         CaptainDTO foundCaptain = null;
         try {
@@ -224,7 +224,7 @@ public final class CaptainServiceImpl extends RemoteServiceServlet implements Ca
      */
     private RemoveAllCaptainsResponse executeRemoveAllCaptains(final RemoveAllCaptains action) throws ServiceException {
         RemoveAllCaptainsResponse response = new RemoveAllCaptainsResponse();
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         CaptainDAO captainDAO = factory.getCaptainDAO();
         Boolean result = null;
         try {
@@ -249,7 +249,7 @@ public final class CaptainServiceImpl extends RemoteServiceServlet implements Ca
     private RemoveCaptainResponse executeRemoveCaptain(final RemoveCaptain action) throws ServiceException {
         RemoveCaptainResponse response = new RemoveCaptainResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         CaptainDAO captainDAO = factory.getCaptainDAO();
         // boolean foundCaptain = false;
         try {
@@ -274,7 +274,7 @@ public final class CaptainServiceImpl extends RemoteServiceServlet implements Ca
     private UpdateCaptainResponse executeUpdateCaptain(final UpdateCaptain action) throws ServiceException {
         UpdateCaptainResponse response = new UpdateCaptainResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         CaptainDAO captainDAO = factory.getCaptainDAO();
         CaptainDTO foundCaptain = null;
         try {

@@ -35,6 +35,7 @@ import com.smartgwt.client.util.SC;
  * Entry point classes define <code>onModuleLoad()</code>.
  */
 public final class StarMalaccamax implements EntryPoint {
+
     /**
      * spin up gin bindings
      */
@@ -60,7 +61,7 @@ public final class StarMalaccamax implements EntryPoint {
      */
     @Override
     public void onModuleLoad() {
-	Bridge.exportStaticMethod();
+    	Bridge.exportStaticMethod();
 
         eventBus = new DefaultEventBus();
         Application.getInstance().setEventBus(eventBus);

@@ -27,6 +27,7 @@ public final class GameEventDTO implements GameEvent, IsSerializable, Serializab
     /**
 	 * 
 	 */
+    @com.googlecode.objectify.annotation.Index
     private Date endDateTime;
     /**
 	 * 
@@ -37,10 +38,12 @@ public final class GameEventDTO implements GameEvent, IsSerializable, Serializab
 	 */
     @com.google.code.twig.annotation.Id
     @com.googlecode.objectify.annotation.Id
+    @com.googlecode.objectify.annotation.Index
     private Long id;
     /**
 	 * 
 	 */
+    @com.googlecode.objectify.annotation.Index
     private Long playerId;
     /**
 	 * 
@@ -50,6 +53,7 @@ public final class GameEventDTO implements GameEvent, IsSerializable, Serializab
     /**
 	 * 
 	 */
+    @com.googlecode.objectify.annotation.Index
     private boolean eventEnabled;
 
     /**
@@ -250,6 +254,20 @@ public final class GameEventDTO implements GameEvent, IsSerializable, Serializab
     @Override
     public void setActivityCompletionDate(final Date date) {
         this.activityCompletionDate = date;
+    }
+    public static String getFieldGetter(String fieldName) {
+    	String methodName = null;
+    	
+    	if (fieldName.equals("id")) {
+    		methodName = "getId";
+    	} else if (fieldName.equals("playerId")) {
+    		methodName = "getPlayerId";
+    	} else if (fieldName.equals("endDateTime")) {
+    		methodName = "getEndDateTime";
+    	} else if (fieldName.equals("eventEnabled")) {
+    		methodName = "isEventEnabled";
+    	}
+    	return methodName;
     }
 
 }

@@ -31,3 +31,4 @@ www-test/
 .settings/
 
 Thumbs.db
+/WEB-INF

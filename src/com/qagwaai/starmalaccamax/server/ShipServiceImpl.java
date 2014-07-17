@@ -9,7 +9,6 @@ import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestC
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import com.google.appengine.tools.development.testing.LocalUserServiceTestConfig;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import com.qagwaai.starmalaccamax.client.Application;
 import com.qagwaai.starmalaccamax.client.service.ShipService;
 import com.qagwaai.starmalaccamax.client.service.action.Action;
 import com.qagwaai.starmalaccamax.client.service.action.AddShip;
@@ -39,6 +38,7 @@ import com.qagwaai.starmalaccamax.client.service.action.UpdateShip;
 import com.qagwaai.starmalaccamax.client.service.action.UpdateShipResponse;
 import com.qagwaai.starmalaccamax.client.service.action.UpdateShipType;
 import com.qagwaai.starmalaccamax.client.service.action.UpdateShipTypeResponse;
+import com.qagwaai.starmalaccamax.server.config.Configuration;
 import com.qagwaai.starmalaccamax.server.dao.CaptainDAO;
 import com.qagwaai.starmalaccamax.server.dao.DAOException;
 import com.qagwaai.starmalaccamax.server.dao.DAOFactory;
@@ -139,7 +139,7 @@ public final class ShipServiceImpl extends RemoteServiceServlet implements ShipS
     private AddShipResponse executeAddShip(final AddShip action) throws ServiceException {
         AddShipResponse response = new AddShipResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         ShipDAO shipDAO = factory.getShipDAO();
         ShipDTO foundShip = null;
         try {
@@ -164,7 +164,7 @@ public final class ShipServiceImpl extends RemoteServiceServlet implements ShipS
     private AddShipTypeResponse executeAddShipType(final AddShipType action) throws ServiceException {
         AddShipTypeResponse response = new AddShipTypeResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         ShipTypeDAO shipTypeDAO = factory.getShipTypeDAO();
         ShipTypeDTO foundShipType = null;
         try {
@@ -189,7 +189,7 @@ public final class ShipServiceImpl extends RemoteServiceServlet implements ShipS
      */
     private GetAllShipsResponse executeGetAllShips(final GetAllShips action) throws ServiceException {
         GetAllShipsResponse response = new GetAllShipsResponse();
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         ShipDAO shipDAO = factory.getShipDAO();
 
         ArrayList<ShipDTO> foundShips = null;
@@ -236,7 +236,7 @@ public final class ShipServiceImpl extends RemoteServiceServlet implements ShipS
      */
     private GetAllShipTypesResponse executeGetAllShipTypes(final GetAllShipTypes action) throws ServiceException {
         GetAllShipTypesResponse response = new GetAllShipTypesResponse();
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         ShipTypeDAO shipTypeDAO = factory.getShipTypeDAO();
 
         ArrayList<ShipTypeDTO> foundShipTypes = null;
@@ -286,7 +286,7 @@ public final class ShipServiceImpl extends RemoteServiceServlet implements ShipS
 
         GetShipResponse response = new GetShipResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         ShipDAO shipDAO = factory.getShipDAO();
         ShipDTO foundShip = null;
         try {
@@ -312,7 +312,7 @@ public final class ShipServiceImpl extends RemoteServiceServlet implements ShipS
     private GetShipForCaptainResponse executeGetShipForCaptain(final GetShipForCaptain action) throws ServiceException {
         GetShipForCaptainResponse response = new GetShipForCaptainResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         ShipDAO shipDAO = factory.getShipDAO();
         ShipDTO foundShip = null;
         try {
@@ -337,7 +337,7 @@ public final class ShipServiceImpl extends RemoteServiceServlet implements ShipS
      */
     private GetShipsForUserResponse executeGetShipsForUser(final GetShipsForUser action) throws ServiceException {
         GetShipsForUserResponse response = new GetShipsForUserResponse();
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         CaptainDAO captainDAO = factory.getCaptainDAO();
         ShipDAO shipDAO = factory.getShipDAO();
 
@@ -377,7 +377,7 @@ public final class ShipServiceImpl extends RemoteServiceServlet implements ShipS
      */
     private RemoveAllShipsResponse executeRemoveAllShips(final RemoveAllShips action) throws ServiceException {
         RemoveAllShipsResponse response = new RemoveAllShipsResponse();
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         ShipDAO shipDAO = factory.getShipDAO();
         Boolean result = null;
         try {
@@ -402,7 +402,7 @@ public final class ShipServiceImpl extends RemoteServiceServlet implements ShipS
     private RemoveAllShipTypesResponse executeRemoveAllShipTypes(final RemoveAllShipTypes action)
         throws ServiceException {
         RemoveAllShipTypesResponse response = new RemoveAllShipTypesResponse();
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         ShipTypeDAO shipTypeDAO = factory.getShipTypeDAO();
         Boolean result = null;
         try {
@@ -427,7 +427,7 @@ public final class ShipServiceImpl extends RemoteServiceServlet implements ShipS
     private RemoveShipResponse executeRemoveShip(final RemoveShip action) throws ServiceException {
         RemoveShipResponse response = new RemoveShipResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         ShipDAO shipDAO = factory.getShipDAO();
         // boolean foundShip = false;
         try {
@@ -452,7 +452,7 @@ public final class ShipServiceImpl extends RemoteServiceServlet implements ShipS
     private RemoveShipTypeResponse executeRemoveShipType(final RemoveShipType action) throws ServiceException {
         RemoveShipTypeResponse response = new RemoveShipTypeResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         ShipTypeDAO shipTypeDAO = factory.getShipTypeDAO();
         // boolean foundShipType = false;
         try {
@@ -477,7 +477,7 @@ public final class ShipServiceImpl extends RemoteServiceServlet implements ShipS
     private UpdateShipResponse executeUpdateShip(final UpdateShip action) throws ServiceException {
         UpdateShipResponse response = new UpdateShipResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         ShipDAO shipDAO = factory.getShipDAO();
         ShipDTO foundShip = null;
         try {
@@ -502,7 +502,7 @@ public final class ShipServiceImpl extends RemoteServiceServlet implements ShipS
     private UpdateShipTypeResponse executeUpdateShipType(final UpdateShipType action) throws ServiceException {
         UpdateShipTypeResponse response = new UpdateShipTypeResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         ShipTypeDAO shipTypeDAO = factory.getShipTypeDAO();
         ShipTypeDTO foundShipType = null;
         try {

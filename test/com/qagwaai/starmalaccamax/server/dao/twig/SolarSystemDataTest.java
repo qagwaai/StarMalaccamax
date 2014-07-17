@@ -21,7 +21,6 @@ import org.junit.Test;
 import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import com.google.appengine.tools.development.testing.LocalUserServiceTestConfig;
-import com.qagwaai.starmalaccamax.client.Application;
 import com.qagwaai.starmalaccamax.client.admin.util.DelimitedToRecord;
 import com.qagwaai.starmalaccamax.client.service.action.GetPlayerOpportunitiesPage;
 import com.qagwaai.starmalaccamax.client.service.action.GetPlayerOpportunitiesPageResponse;
@@ -84,7 +83,7 @@ public final class SolarSystemDataTest {
 	 */
 	@Test
 	public void testBulkLoad() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		SolarSystemDAO dao = factory.getSolarSystemDAO();
 		Assert.assertNotNull(dao);
 
@@ -113,7 +112,7 @@ public final class SolarSystemDataTest {
 
 	@Test
 	public void testClosestMarketsToPlanet() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		SolarSystemDAO solarSystemDao = factory.getSolarSystemDAO();
 		Assert.assertNotNull(solarSystemDao);
 
@@ -252,7 +251,7 @@ public final class SolarSystemDataTest {
 	 */
 	@Test
 	public void testCreateAndLoad() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		SolarSystemDAO dao = factory.getSolarSystemDAO();
 		Assert.assertNotNull(dao);
 
@@ -275,7 +274,7 @@ public final class SolarSystemDataTest {
 	 */
 	@Test
 	public void testGetSolarSystems() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		SolarSystemDAO dao = factory.getSolarSystemDAO();
 		Assert.assertNotNull(dao);
 
@@ -303,7 +302,7 @@ public final class SolarSystemDataTest {
 	 */
 	@Test
 	public void testNameFilter() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		SolarSystemDAO dao = factory.getSolarSystemDAO();
 		Assert.assertNotNull(dao);
 
@@ -343,7 +342,7 @@ public final class SolarSystemDataTest {
 	 */
 	@Test
 	public void testNameSort() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		SolarSystemDAO dao = factory.getSolarSystemDAO();
 		Assert.assertNotNull(dao);
 
@@ -377,7 +376,7 @@ public final class SolarSystemDataTest {
 	 */
 	@Test
 	public void testRemove() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		SolarSystemDAO dao = factory.getSolarSystemDAO();
 		Assert.assertNotNull(dao);
 
@@ -400,7 +399,7 @@ public final class SolarSystemDataTest {
 	 */
 	@Test
 	public void testTotal() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		SolarSystemDAO dao = factory.getSolarSystemDAO();
 		Assert.assertNotNull(dao);
 
@@ -427,7 +426,7 @@ public final class SolarSystemDataTest {
 	 */
 	@Test
 	public void testUpdate() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		SolarSystemDAO dao = factory.getSolarSystemDAO();
 		Assert.assertNotNull(dao);
 

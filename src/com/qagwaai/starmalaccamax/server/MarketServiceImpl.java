@@ -9,7 +9,6 @@ import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestC
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import com.google.appengine.tools.development.testing.LocalUserServiceTestConfig;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import com.qagwaai.starmalaccamax.client.Application;
 import com.qagwaai.starmalaccamax.client.service.MarketService;
 import com.qagwaai.starmalaccamax.client.service.action.Action;
 import com.qagwaai.starmalaccamax.client.service.action.AddMarket;
@@ -32,6 +31,7 @@ import com.qagwaai.starmalaccamax.client.service.action.Response;
 import com.qagwaai.starmalaccamax.client.service.action.UpdateMarket;
 import com.qagwaai.starmalaccamax.client.service.action.UpdateMarketResponse;
 import com.qagwaai.starmalaccamax.server.business.Calculations;
+import com.qagwaai.starmalaccamax.server.config.Configuration;
 import com.qagwaai.starmalaccamax.server.dao.DAOException;
 import com.qagwaai.starmalaccamax.server.dao.DAOFactory;
 import com.qagwaai.starmalaccamax.server.dao.MarketDAO;
@@ -122,7 +122,7 @@ public final class MarketServiceImpl extends RemoteServiceServlet implements Mar
     private AddMarketResponse executeAddMarket(final AddMarket action) throws ServiceException {
         AddMarketResponse response = new AddMarketResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         MarketDAO marketDAO = factory.getMarketDAO();
         MarketDTO foundMarket = null;
         try {
@@ -147,7 +147,7 @@ public final class MarketServiceImpl extends RemoteServiceServlet implements Mar
     private BulkAddMarketResponse executeBulkAddMarket(final BulkAddMarket action) throws ServiceException {
         BulkAddMarketResponse response = new BulkAddMarketResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         MarketDAO marketDAO = factory.getMarketDAO();
         ArrayList<MarketDTO> foundMarket = null;
         try {
@@ -172,7 +172,7 @@ public final class MarketServiceImpl extends RemoteServiceServlet implements Mar
      */
     private GetAllMarketsResponse executeGetAllMarkets(final GetAllMarkets action) throws ServiceException {
         GetAllMarketsResponse response = new GetAllMarketsResponse();
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         MarketDAO marketDAO = factory.getMarketDAO();
 
         ArrayList<MarketDTO> foundMarkets = null;
@@ -221,7 +221,7 @@ public final class MarketServiceImpl extends RemoteServiceServlet implements Mar
     private GetLocalOpportunitiesForCargoResponse executeGetLocalOpportunitiesForCargo(
         final GetLocalOpportunitiesForCargo action) throws ServiceException {
         GetLocalOpportunitiesForCargoResponse response = new GetLocalOpportunitiesForCargoResponse();
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         PlanetDAO planetDAO = factory.getPlanetDAO();
         MarketDAO marketDAO = factory.getMarketDAO();
 
@@ -280,7 +280,7 @@ public final class MarketServiceImpl extends RemoteServiceServlet implements Mar
     private GetMarketResponse executeGetMarket(final GetMarket action) throws ServiceException {
         GetMarketResponse response = new GetMarketResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         MarketDAO marketDAO = factory.getMarketDAO();
         MarketDTO foundMarket = null;
         try {
@@ -307,7 +307,7 @@ public final class MarketServiceImpl extends RemoteServiceServlet implements Mar
         throws ServiceException {
         GetMarketForPlanetResponse response = new GetMarketForPlanetResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         MarketDAO marketDAO = factory.getMarketDAO();
         MarketDTO foundMarket = null;
         try {
@@ -332,7 +332,7 @@ public final class MarketServiceImpl extends RemoteServiceServlet implements Mar
      */
     private RemoveAllMarketsResponse executeRemoveAllMarkets(final RemoveAllMarkets action) throws ServiceException {
         RemoveAllMarketsResponse response = new RemoveAllMarketsResponse();
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         MarketDAO marketDAO = factory.getMarketDAO();
         Boolean result = null;
         try {
@@ -357,7 +357,7 @@ public final class MarketServiceImpl extends RemoteServiceServlet implements Mar
     private RemoveMarketResponse executeRemoveMarket(final RemoveMarket action) throws ServiceException {
         RemoveMarketResponse response = new RemoveMarketResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         MarketDAO marketDAO = factory.getMarketDAO();
         // boolean foundMarket = false;
         try {
@@ -382,7 +382,7 @@ public final class MarketServiceImpl extends RemoteServiceServlet implements Mar
     private UpdateMarketResponse executeUpdateMarket(final UpdateMarket action) throws ServiceException {
         UpdateMarketResponse response = new UpdateMarketResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         MarketDAO marketDAO = factory.getMarketDAO();
         MarketDTO foundMarket = null;
         try {

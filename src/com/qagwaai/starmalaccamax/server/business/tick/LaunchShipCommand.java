@@ -9,8 +9,8 @@ package com.qagwaai.starmalaccamax.server.business.tick;
 import java.util.Date;
 import java.util.logging.Logger;
 
-import com.qagwaai.starmalaccamax.client.Application;
 import com.qagwaai.starmalaccamax.server.business.Calculations;
+import com.qagwaai.starmalaccamax.server.config.Configuration;
 import com.qagwaai.starmalaccamax.server.dao.DAOException;
 import com.qagwaai.starmalaccamax.server.dao.DAOFactory;
 import com.qagwaai.starmalaccamax.server.dao.GameActivityDAO;
@@ -93,7 +93,7 @@ public final class LaunchShipCommand implements TickCommand {
         if (launchActivity == null || gameEvent == null) {
             return false;
         }
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         ShipDAO shipDAO = factory.getShipDAO();
         GameEventDAO gameEventDAO = factory.getGameEventDAO();
         GameActivityDAO gameActivityDAO = factory.getGameActivityDAO();

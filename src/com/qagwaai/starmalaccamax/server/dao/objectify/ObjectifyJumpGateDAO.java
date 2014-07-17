@@ -33,9 +33,9 @@ public class ObjectifyJumpGateDAO implements JumpGateDAO {
 			if (criterion instanceof SimpleFilterItem) {
 				SimpleFilterItem item = (SimpleFilterItem) criterion;
 				if (item.getField().equals("solarSystemId1")) {
-					command = command.filter(item.getField(), Integer.valueOf(item.getValue()).intValue());
+					command = command.filter(item.getField(), Long.valueOf(item.getValue()).longValue());
 				} else if (item.getField().equals("solarSystemId2")) {
-					command = command.filter(item.getField(), Integer.valueOf(item.getValue()).intValue());
+					command = command.filter(item.getField(), Long.valueOf(item.getValue()).longValue());
 				} else if ( item.getField().equals("id")) {
 					command = (Query<JumpGateDTO>) command.filterKey(Key.create(JumpGateDTO.class, Long.valueOf(item.getValue()).longValue()));
 				}

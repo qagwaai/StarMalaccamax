@@ -6,19 +6,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.google.appengine.api.datastore.Query.FilterOperator;
-import com.google.code.twig.ObjectDatastore;
-import com.google.code.twig.FindCommand.RootFindCommand;
-import com.google.code.twig.annotation.AnnotationObjectDatastore;
 import com.googlecode.objectify.Key;
 import com.googlecode.objectify.cmd.Query;
-import com.qagwaai.starmalaccamax.client.Application;
 import com.qagwaai.starmalaccamax.server.business.Calculations;
+import com.qagwaai.starmalaccamax.server.config.Configuration;
 import com.qagwaai.starmalaccamax.server.dao.DAOException;
 import com.qagwaai.starmalaccamax.server.dao.DAOFactory;
 import com.qagwaai.starmalaccamax.server.dao.MarketDAO;
 import com.qagwaai.starmalaccamax.server.dao.SolarSystemDAO;
-import com.qagwaai.starmalaccamax.server.dao.twig.TwigDAOFactory;
 import com.qagwaai.starmalaccamax.shared.model.ClosestDTO;
 import com.qagwaai.starmalaccamax.shared.model.DistanceDTO;
 import com.qagwaai.starmalaccamax.shared.model.Filter;
@@ -289,7 +284,7 @@ public class ObjectifySolarSystemDAO implements SolarSystemDAO {
 	@Override
 	public ArrayList<MarketOpportunityForShipDTO> getClosestMarketsForPlanet(
 			PlanetDTO planet) throws DAOException {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         MarketDAO marketDAO = factory.getMarketDAO();
 
         Query<ClosestDTO> command = ofy().load().type(ClosestDTO.class);
@@ -323,7 +318,7 @@ public class ObjectifySolarSystemDAO implements SolarSystemDAO {
 	@Override
 	public ArrayList<MarketDTO> getClosestMarketsForPlanets(
 			ArrayList<Long> planetIds) throws DAOException {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         MarketDAO marketDAO = factory.getMarketDAO();
 
         return marketDAO.getMarketsForPlanets(planetIds);
@@ -332,7 +327,7 @@ public class ObjectifySolarSystemDAO implements SolarSystemDAO {
 	@Override
 	public ArrayList<PlanetDistanceDTO> getClosestPlanetsForPlanet(
 			PlanetDTO planet) throws DAOException {
-		//DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		//DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
 		Query<ClosestDTO> command = ofy().load().type(ClosestDTO.class);
         command.filter("originId", planet.getSolarSystemId());
         Iterator<ClosestDTO> itClosests = command.iterator();
@@ -364,7 +359,7 @@ public class ObjectifySolarSystemDAO implements SolarSystemDAO {
 	@Override
 	public ArrayList<ClosestDTO> getClosestsForPlanet(PlanetDTO planet)
 			throws DAOException {
-		//DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		//DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
 		Query<ClosestDTO> command = ofy().load().type(ClosestDTO.class);
         command.filter("originId", planet.getSolarSystemId());
         Iterator<ClosestDTO> itClosests = command.iterator();

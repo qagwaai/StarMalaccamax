@@ -51,14 +51,12 @@ public final class CaptainDTO implements IsSerializable, Serializable, Captain {
 	 * 
 	 */
     @Embedded
-    @Container
     private CaptainSkills skills = new CaptainSkills();
 
     /**
 	 * 
 	 */
     @Embedded
-    @Container
     private CaptainAttributes attributes = new CaptainAttributes();
 
     /**

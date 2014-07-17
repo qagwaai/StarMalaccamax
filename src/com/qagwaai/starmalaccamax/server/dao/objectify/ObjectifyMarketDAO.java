@@ -35,7 +35,7 @@ public class ObjectifyMarketDAO implements MarketDAO {
 			if (criterion instanceof SimpleFilterItem) {
 				SimpleFilterItem item = (SimpleFilterItem) criterion;
 				if (item.getField().equals("planetId")) {
-					command = command.filter(item.getField(), Integer.valueOf(item.getValue()).intValue());
+					command = command.filter(item.getField(), Long.valueOf(item.getValue()).longValue());
 				} else if ( item.getField().equals("id")) {
 					command = (Query<MarketDTO>) command.filterKey(Key.create(MarketDTO.class, Long.valueOf(item.getValue()).longValue()));
 				}

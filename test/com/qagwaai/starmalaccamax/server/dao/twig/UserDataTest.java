@@ -17,7 +17,6 @@ import org.junit.Test;
 import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import com.google.appengine.tools.development.testing.LocalUserServiceTestConfig;
-import com.qagwaai.starmalaccamax.client.Application;
 import com.qagwaai.starmalaccamax.server.dao.DAOFactory;
 import com.qagwaai.starmalaccamax.server.dao.UserDAO;
 import com.qagwaai.starmalaccamax.shared.model.User;
@@ -77,7 +76,7 @@ public final class UserDataTest {
 	 */
 	@Test
 	public void testCreateAndLoad() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		UserDAO dao = factory.getUserDAO();
 		Assert.assertNotNull(dao);
 
@@ -100,7 +99,7 @@ public final class UserDataTest {
 	 */
 	@Test
 	public void testFindUserByEmail() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		UserDAO dao = factory.getUserDAO();
 		Assert.assertNotNull(dao);
 
@@ -118,7 +117,7 @@ public final class UserDataTest {
 	 */
 	@Test
 	public void testGetUsers() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		UserDAO dao = factory.getUserDAO();
 		Assert.assertNotNull(dao);
 
@@ -146,7 +145,7 @@ public final class UserDataTest {
 	 */
 	@Test
 	public void testRemove() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		UserDAO dao = factory.getUserDAO();
 		Assert.assertNotNull(dao);
 
@@ -169,7 +168,7 @@ public final class UserDataTest {
 	 */
 	@Test
 	public void testUpdate() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		UserDAO dao = factory.getUserDAO();
 		Assert.assertNotNull(dao);
 

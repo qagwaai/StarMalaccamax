@@ -39,7 +39,7 @@ public class ObjectifyCaptainDAO implements CaptainDAO {
 					// will be impled below
 					if (item.getField().equals("ownerId")) {
 						command = command.filter(item.getField(),
-								Long.valueOf(item.getValue()));
+								Long.valueOf(item.getValue()).longValue());
 						// command.addFilter(item.getField(),
 						// FilterOperator.EQUAL, Long.valueOf(item.getValue()));
 					} else {

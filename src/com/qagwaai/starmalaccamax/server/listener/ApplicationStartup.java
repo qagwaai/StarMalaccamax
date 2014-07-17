@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import com.qagwaai.starmalaccamax.client.Application;
+import com.qagwaai.starmalaccamax.server.config.Configuration;
 
 public class ApplicationStartup implements ServletContextListener {
 
@@ -35,7 +35,7 @@ public class ApplicationStartup implements ServletContextListener {
 			log.severe("Application Config failed: " + e.getMessage());
 		}
 		if ((factory == 1) || (factory == 2) || (factory == 3)) {
-			Application.getInstance().setDAOFactory(factory);
+			Configuration.getInstance().setDAOFactory(factory);
 		} else {
 			log.severe("Application Config Failed : incorrect dao factory [" + factory + "]");
 		}

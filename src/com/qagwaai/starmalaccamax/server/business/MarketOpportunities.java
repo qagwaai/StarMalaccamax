@@ -9,7 +9,7 @@ package com.qagwaai.starmalaccamax.server.business;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
-import com.qagwaai.starmalaccamax.client.Application;
+import com.qagwaai.starmalaccamax.server.config.Configuration;
 import com.qagwaai.starmalaccamax.server.dao.DAOException;
 import com.qagwaai.starmalaccamax.server.dao.DAOFactory;
 import com.qagwaai.starmalaccamax.server.dao.SolarSystemDAO;
@@ -47,7 +47,7 @@ public final class MarketOpportunities {
      */
     public static ArrayList<MarketOpportunityForShipDTO> getMarketOpportunitiesForShips(final ArrayList<ShipDTO> ships)
         throws ServiceException {
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         SolarSystemDAO ssDAO = factory.getSolarSystemDAO();
 
         ArrayList<MarketOpportunityForShipDTO> opportunities = new ArrayList<MarketOpportunityForShipDTO>();

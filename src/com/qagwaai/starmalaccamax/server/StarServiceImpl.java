@@ -10,7 +10,6 @@ import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import com.google.appengine.tools.development.testing.LocalUserServiceTestConfig;
 import com.google.gson.Gson;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import com.qagwaai.starmalaccamax.client.Application;
 import com.qagwaai.starmalaccamax.client.service.StarService;
 import com.qagwaai.starmalaccamax.client.service.action.AbstractPolyAction;
 import com.qagwaai.starmalaccamax.client.service.action.AbstractPolyResponse;
@@ -32,6 +31,7 @@ import com.qagwaai.starmalaccamax.client.service.action.RemoveStarResponse;
 import com.qagwaai.starmalaccamax.client.service.action.Response;
 import com.qagwaai.starmalaccamax.client.service.action.UpdateStar;
 import com.qagwaai.starmalaccamax.client.service.action.UpdateStarResponse;
+import com.qagwaai.starmalaccamax.server.config.Configuration;
 import com.qagwaai.starmalaccamax.server.dao.DAOException;
 import com.qagwaai.starmalaccamax.server.dao.DAOFactory;
 import com.qagwaai.starmalaccamax.server.dao.StarDAO;
@@ -118,7 +118,7 @@ public final class StarServiceImpl extends RemoteServiceServlet implements StarS
     private AddStarResponse executeAddStar(final AddStar action) throws ServiceException {
         AddStarResponse response = new AddStarResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         StarDAO starDAO = factory.getStarDAO();
         StarDTO foundStar = null;
         try {
@@ -143,7 +143,7 @@ public final class StarServiceImpl extends RemoteServiceServlet implements StarS
     private BulkAddStarResponse executeBulkAddStar(final BulkAddStar action) throws ServiceException {
         BulkAddStarResponse response = new BulkAddStarResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         StarDAO starDAO = factory.getStarDAO();
         ArrayList<StarDTO> foundStar = null;
         try {
@@ -168,7 +168,7 @@ public final class StarServiceImpl extends RemoteServiceServlet implements StarS
      */
     private GetAllStarsResponse executeGetAllStars(final GetAllStars action) throws ServiceException {
         GetAllStarsResponse response = new GetAllStarsResponse();
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         StarDAO starDAO = factory.getStarDAO();
 
         ArrayList<StarDTO> foundStars = null;
@@ -214,7 +214,7 @@ public final class StarServiceImpl extends RemoteServiceServlet implements StarS
      */
     private GetStarsForSolarSystemResponse executeGetStarsForSolarSystem(final GetStarsForSolarSystem action)
         throws ServiceException {
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         StarDAO starDAO = factory.getStarDAO();
 
         ArrayList<StarDTO> foundStars = null;
@@ -252,7 +252,7 @@ public final class StarServiceImpl extends RemoteServiceServlet implements StarS
      */
     private RemoveAllSunsResponse executeRemoveAllSuns(final RemoveAllSuns action) throws ServiceException {
         RemoveAllSunsResponse response = new RemoveAllSunsResponse();
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         StarDAO starDAO = factory.getStarDAO();
         Boolean result = null;
         try {
@@ -277,7 +277,7 @@ public final class StarServiceImpl extends RemoteServiceServlet implements StarS
     private RemoveStarResponse executeRemoveStar(final RemoveStar action) throws ServiceException {
         RemoveStarResponse response = new RemoveStarResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         StarDAO starDAO = factory.getStarDAO();
         // boolean foundStar = false;
         try {
@@ -302,7 +302,7 @@ public final class StarServiceImpl extends RemoteServiceServlet implements StarS
     private UpdateStarResponse executeUpdateStar(final UpdateStar action) throws ServiceException {
         UpdateStarResponse response = new UpdateStarResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         StarDAO starDAO = factory.getStarDAO();
         StarDTO foundStar = null;
         try {

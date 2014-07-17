@@ -62,14 +62,14 @@
 	<script type="text/javascript" src="lib/Stats.js"></script>
 	<script type="text/javascript" src="lib/TrackballControls.js"></script>
 	<script type="text/javascript" src="lib/SceneExporter.js"></script>
-		<script src="lib/CopyShader.js"></script>
-		<script src="lib/FilmShader.js"></script>
+	<script src="lib/CopyShader.js"></script>
+	<script src="lib/FilmShader.js"></script>
 
-		<script src="lib/EffectComposer.js"></script>
-		<script src="lib/ShaderPass.js"></script>
-		<script src="lib/MaskPass.js"></script>
-		<script src="lib/RenderPass.js"></script>
-		<script src="lib/FilmPass.js"></script>
+	<script src="lib/EffectComposer.js"></script>
+	<script src="lib/ShaderPass.js"></script>
+	<script src="lib/MaskPass.js"></script>
+	<script src="lib/RenderPass.js"></script>
+	<script src="lib/FilmPass.js"></script>
 	<script type="text/javascript" src="js/ssviz.js"></script>
 	<script>
     	var clock = new THREE.Clock();
@@ -108,7 +108,7 @@
 	<div id="loading">
 	    <div class="loadingIndicator">
 	        <!--<img src="images/pieces/48/cube_green.gif" width="32" height="32" style="margin-right:8px;float:left;vertical-align:top;"/>Star Malaccamax<br/>-->
-	        <img src="images/loading.gif" width="16" height="16" style="margin-right:8px;float:left;vertical-align:top;"/>Star Malaccamax 1.0.0.30<br/>
+	        <img src="images/loading.gif" width="16" height="16" style="margin-right:8px;float:left;vertical-align:top;"/>Star Malaccamax 1.0.1.3<br/>
 	        <span id="loadingMsg">Loading styles and images...</span></div>
 		</div>
 	</div>
@@ -154,7 +154,7 @@
 	</script>
 	
 	<!--include the application JS-->
-	<script type="text/javascript">document.getElementById('loadingMsg').innerHTML = 'Loading Application<br>Please wait...';</script>
+	<script type="text/javascript">document.getElementById('loadingMsg').innerHTML = 'Loading Application. Please wait...';</script>
 	<script type="text/javascript" src="starmalaccamax/starmalaccamax.nocache.js"></script>
 
 <%
@@ -162,7 +162,7 @@
 %>
   </head>
   <body bgcolor="black" text="white">
-  	<span class="largeBold">Welcome to Star Malaccamax version 1.0.0.27</span>
+  	<span class="largeBold">Welcome to Star Malaccamax version 1.0.1.3</span>
   	<div class="storyText">The year is 12752, there are 115,184 solar systems that have been visited through the galaxy.  Ships make their way through jump gates that connect each of the known systems.</div>	
   	<div class="storyText">Your job is to make money.  Most solar systems have planets that support markets.  Trade between the planets can provide a major source of revenue.</div>
   	<%

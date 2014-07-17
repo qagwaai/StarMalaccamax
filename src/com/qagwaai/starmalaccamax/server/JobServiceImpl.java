@@ -9,7 +9,6 @@ import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestC
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import com.google.appengine.tools.development.testing.LocalUserServiceTestConfig;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import com.qagwaai.starmalaccamax.client.Application;
 import com.qagwaai.starmalaccamax.client.service.JobService;
 import com.qagwaai.starmalaccamax.client.service.action.Action;
 import com.qagwaai.starmalaccamax.client.service.action.AddJob;
@@ -25,6 +24,7 @@ import com.qagwaai.starmalaccamax.client.service.action.RemoveJobResponse;
 import com.qagwaai.starmalaccamax.client.service.action.Response;
 import com.qagwaai.starmalaccamax.client.service.action.UpdateJob;
 import com.qagwaai.starmalaccamax.client.service.action.UpdateJobResponse;
+import com.qagwaai.starmalaccamax.server.config.Configuration;
 import com.qagwaai.starmalaccamax.server.dao.DAOException;
 import com.qagwaai.starmalaccamax.server.dao.DAOFactory;
 import com.qagwaai.starmalaccamax.server.dao.JobDAO;
@@ -102,7 +102,7 @@ public final class JobServiceImpl extends RemoteServiceServlet implements JobSer
     private AddJobResponse executeAddJob(final AddJob action) throws ServiceException {
         AddJobResponse response = new AddJobResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         JobDAO jobDAO = factory.getJobDAO();
         JobDTO foundJob = null;
         try {
@@ -127,7 +127,7 @@ public final class JobServiceImpl extends RemoteServiceServlet implements JobSer
     private BulkAddJobResponse executeBulkAddJob(final BulkAddJob action) throws ServiceException {
         BulkAddJobResponse response = new BulkAddJobResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         JobDAO jobDAO = factory.getJobDAO();
         ArrayList<JobDTO> foundJob = null;
         try {
@@ -152,7 +152,7 @@ public final class JobServiceImpl extends RemoteServiceServlet implements JobSer
      */
     private GetAllJobsResponse executeGetAllJobs(final GetAllJobs action) throws ServiceException {
         GetAllJobsResponse response = new GetAllJobsResponse();
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         JobDAO jobDAO = factory.getJobDAO();
 
         ArrayList<JobDTO> foundJobs = null;
@@ -198,7 +198,7 @@ public final class JobServiceImpl extends RemoteServiceServlet implements JobSer
      */
     private RemoveAllJobsResponse executeRemoveAllJobs(final RemoveAllJobs action) throws ServiceException {
         RemoveAllJobsResponse response = new RemoveAllJobsResponse();
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         JobDAO jobDAO = factory.getJobDAO();
         Boolean result = null;
         try {
@@ -223,7 +223,7 @@ public final class JobServiceImpl extends RemoteServiceServlet implements JobSer
     private RemoveJobResponse executeRemoveJob(final RemoveJob action) throws ServiceException {
         RemoveJobResponse response = new RemoveJobResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         JobDAO jobDAO = factory.getJobDAO();
         // boolean foundJob = false;
         try {
@@ -248,7 +248,7 @@ public final class JobServiceImpl extends RemoteServiceServlet implements JobSer
     private UpdateJobResponse executeUpdateJob(final UpdateJob action) throws ServiceException {
         UpdateJobResponse response = new UpdateJobResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         JobDAO jobDAO = factory.getJobDAO();
         JobDTO foundJob = null;
         try {

@@ -18,7 +18,6 @@ import org.junit.Test;
 import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import com.google.appengine.tools.development.testing.LocalUserServiceTestConfig;
-import com.qagwaai.starmalaccamax.client.Application;
 import com.qagwaai.starmalaccamax.server.dao.DAOFactory;
 import com.qagwaai.starmalaccamax.server.dao.JobDAO;
 import com.qagwaai.starmalaccamax.shared.model.Job;
@@ -78,7 +77,7 @@ public final class JobDataTest {
 	 */
 	@Test
 	public void testCreateAndLoad() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		JobDAO dao = factory.getJobDAO();
 		Assert.assertNotNull(dao);
 
@@ -101,7 +100,7 @@ public final class JobDataTest {
 	 */
 	@Test
 	public void testGetJobs() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		JobDAO dao = factory.getJobDAO();
 		Assert.assertNotNull(dao);
 
@@ -129,7 +128,7 @@ public final class JobDataTest {
 	 */
 	@Test
 	public void testLastVisitedSort() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		JobDAO dao = factory.getJobDAO();
 		Assert.assertNotNull(dao);
 		addLotsOfRecords(dao);
@@ -146,7 +145,7 @@ public final class JobDataTest {
 	 */
 	@Test
 	public void testRemove() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		JobDAO dao = factory.getJobDAO();
 		Assert.assertNotNull(dao);
 
@@ -169,7 +168,7 @@ public final class JobDataTest {
 	 */
 	@Test
 	public void testTotal() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		JobDAO dao = factory.getJobDAO();
 		Assert.assertNotNull(dao);
 
@@ -196,7 +195,7 @@ public final class JobDataTest {
 	 */
 	@Test
 	public void testUpdate() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		JobDAO dao = factory.getJobDAO();
 		Assert.assertNotNull(dao);
 

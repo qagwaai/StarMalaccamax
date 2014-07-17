@@ -24,7 +24,7 @@ import com.google.appengine.api.users.UserServiceFactory;
 import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import com.google.appengine.tools.development.testing.LocalUserServiceTestConfig;
-import com.qagwaai.starmalaccamax.client.Application;
+import com.qagwaai.starmalaccamax.server.config.Configuration;
 import com.qagwaai.starmalaccamax.server.dao.DAOException;
 import com.qagwaai.starmalaccamax.server.dao.DAOFactory;
 import com.qagwaai.starmalaccamax.server.dao.UserDAO;
@@ -69,7 +69,7 @@ public final class ProfileImageUpload extends HttpServlet {
         BlobKey blobKey = blobs.get("upfile");
         if (blobKey != null) {
             User user = userService.getCurrentUser();
-            DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+            DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
             UserDAO userDAO = factory.getUserDAO();
             com.qagwaai.starmalaccamax.shared.model.UserDTO foundUser = null;
             try {

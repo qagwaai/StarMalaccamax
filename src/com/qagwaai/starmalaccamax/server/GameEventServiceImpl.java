@@ -9,7 +9,6 @@ import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestC
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import com.google.appengine.tools.development.testing.LocalUserServiceTestConfig;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import com.qagwaai.starmalaccamax.client.Application;
 import com.qagwaai.starmalaccamax.client.service.GameEventService;
 import com.qagwaai.starmalaccamax.client.service.action.Action;
 import com.qagwaai.starmalaccamax.client.service.action.AddGameEvent;
@@ -23,6 +22,7 @@ import com.qagwaai.starmalaccamax.client.service.action.RemoveGameEventResponse;
 import com.qagwaai.starmalaccamax.client.service.action.Response;
 import com.qagwaai.starmalaccamax.client.service.action.UpdateGameEvent;
 import com.qagwaai.starmalaccamax.client.service.action.UpdateGameEventResponse;
+import com.qagwaai.starmalaccamax.server.config.Configuration;
 import com.qagwaai.starmalaccamax.server.dao.DAOException;
 import com.qagwaai.starmalaccamax.server.dao.DAOFactory;
 import com.qagwaai.starmalaccamax.server.dao.GameEventDAO;
@@ -96,7 +96,7 @@ public final class GameEventServiceImpl extends RemoteServiceServlet implements 
     private AddGameEventResponse executeAddGameEvent(final AddGameEvent action) throws ServiceException {
         AddGameEventResponse response = new AddGameEventResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         GameEventDAO gameEventDAO = factory.getGameEventDAO();
         GameEventDTO foundGameEvent = null;
         try {
@@ -121,7 +121,7 @@ public final class GameEventServiceImpl extends RemoteServiceServlet implements 
      */
     private GetAllGameEventsResponse executeGetAllGameEvents(final GetAllGameEvents action) throws ServiceException {
         GetAllGameEventsResponse response = new GetAllGameEventsResponse();
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         GameEventDAO gameEventDAO = factory.getGameEventDAO();
 
         ArrayList<GameEventDTO> foundGameEvents = null;
@@ -169,7 +169,7 @@ public final class GameEventServiceImpl extends RemoteServiceServlet implements 
     private RemoveAllGameEventsResponse executeRemoveAllGameEvents(final RemoveAllGameEvents action)
         throws ServiceException {
         RemoveAllGameEventsResponse response = new RemoveAllGameEventsResponse();
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         GameEventDAO gameEventDAO = factory.getGameEventDAO();
         Boolean result = null;
         try {
@@ -194,7 +194,7 @@ public final class GameEventServiceImpl extends RemoteServiceServlet implements 
     private RemoveGameEventResponse executeRemoveGameEvent(final RemoveGameEvent action) throws ServiceException {
         RemoveGameEventResponse response = new RemoveGameEventResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         GameEventDAO gameEventDAO = factory.getGameEventDAO();
         // boolean foundGameEvent = false;
         try {
@@ -222,7 +222,7 @@ public final class GameEventServiceImpl extends RemoteServiceServlet implements 
     private UpdateGameEventResponse executeUpdateGameEvent(final UpdateGameEvent action) throws ServiceException {
         UpdateGameEventResponse response = new UpdateGameEventResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         GameEventDAO gameEventDAO = factory.getGameEventDAO();
         GameEventDTO foundGameEvent = null;
         try {

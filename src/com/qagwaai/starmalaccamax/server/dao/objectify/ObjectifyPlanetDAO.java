@@ -33,7 +33,7 @@ public class ObjectifyPlanetDAO implements PlanetDAO {
 			if (criterion instanceof SimpleFilterItem) {
 				SimpleFilterItem item = (SimpleFilterItem) criterion;
 				if (item.getField().equals("solarSystemId")) {
-					command = command.filter(item.getField(), Integer.valueOf(item.getValue()).intValue());
+					command = command.filter(item.getField(), Long.valueOf(item.getValue()).longValue());
 				} else if ( item.getField().equals("id")) {
 					command = (Query<PlanetDTO>) command.filterKey(Key.create(PlanetDTO.class, Long.valueOf(item.getValue()).longValue()));
 				}  else if ( item.getField().equals("isGasGiant")) {

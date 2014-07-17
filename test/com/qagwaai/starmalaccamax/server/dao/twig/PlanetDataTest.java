@@ -21,7 +21,6 @@ import org.junit.Test;
 import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import com.google.appengine.tools.development.testing.LocalUserServiceTestConfig;
-import com.qagwaai.starmalaccamax.client.Application;
 import com.qagwaai.starmalaccamax.client.admin.util.DelimitedToRecord;
 import com.qagwaai.starmalaccamax.server.dao.DAOFactory;
 import com.qagwaai.starmalaccamax.server.dao.PlanetDAO;
@@ -69,7 +68,7 @@ public final class PlanetDataTest {
 	 */
 	@Test
 	public void testBulkLoad() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		PlanetDAO dao = factory.getPlanetDAO();
 		Assert.assertNotNull(dao);
 
@@ -103,7 +102,7 @@ public final class PlanetDataTest {
 	 */
 	@Test
 	public void testCreateAndLoad() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		PlanetDAO dao = factory.getPlanetDAO();
 		Assert.assertNotNull(dao);
 
@@ -126,7 +125,7 @@ public final class PlanetDataTest {
 	 */
 	@Test
 	public void testGetPlanets() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		PlanetDAO dao = factory.getPlanetDAO();
 		Assert.assertNotNull(dao);
 
@@ -154,7 +153,7 @@ public final class PlanetDataTest {
 	 */
 	@Test
 	public void testNameFilter() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		PlanetDAO dao = factory.getPlanetDAO();
 		Assert.assertNotNull(dao);
 
@@ -194,7 +193,7 @@ public final class PlanetDataTest {
 	 */
 	@Test
 	public void testNameSort() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		PlanetDAO dao = factory.getPlanetDAO();
 		Assert.assertNotNull(dao);
 
@@ -228,7 +227,7 @@ public final class PlanetDataTest {
 	 */
 	@Test
 	public void testRemove() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		PlanetDAO dao = factory.getPlanetDAO();
 		Assert.assertNotNull(dao);
 
@@ -251,7 +250,7 @@ public final class PlanetDataTest {
 	 */
 	@Test
 	public void testTotal() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		PlanetDAO dao = factory.getPlanetDAO();
 		Assert.assertNotNull(dao);
 
@@ -278,7 +277,7 @@ public final class PlanetDataTest {
 	 */
 	@Test
 	public void testUpdate() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		PlanetDAO dao = factory.getPlanetDAO();
 		Assert.assertNotNull(dao);
 

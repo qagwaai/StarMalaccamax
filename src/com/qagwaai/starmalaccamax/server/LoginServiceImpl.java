@@ -15,13 +15,13 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import com.qagwaai.starmalaccamax.client.Application;
 import com.qagwaai.starmalaccamax.client.service.LoginService;
 import com.qagwaai.starmalaccamax.client.service.action.Action;
 import com.qagwaai.starmalaccamax.client.service.action.GetCurrentUser;
 import com.qagwaai.starmalaccamax.client.service.action.GetCurrentUserResponse;
 import com.qagwaai.starmalaccamax.client.service.action.Response;
 import com.qagwaai.starmalaccamax.server.business.ChannelManager;
+import com.qagwaai.starmalaccamax.server.config.Configuration;
 import com.qagwaai.starmalaccamax.server.dao.CaptainDAO;
 import com.qagwaai.starmalaccamax.server.dao.DAOException;
 import com.qagwaai.starmalaccamax.server.dao.DAOFactory;
@@ -83,7 +83,7 @@ public final class LoginServiceImpl extends RemoteServiceServlet implements Logi
             bean.setAppengineUniqueId(user.getUserId());
             bean.setAdmin(userService.isUserAdmin());
 
-            DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+            DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
             UserDAO userDAO = factory.getUserDAO();
             CaptainDAO captainDAO = factory.getCaptainDAO();
             com.qagwaai.starmalaccamax.shared.model.UserDTO foundUser = null;

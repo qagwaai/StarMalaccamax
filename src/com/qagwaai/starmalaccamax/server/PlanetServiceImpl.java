@@ -10,7 +10,6 @@ import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import com.google.appengine.tools.development.testing.LocalUserServiceTestConfig;
 import com.google.gson.Gson;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import com.qagwaai.starmalaccamax.client.Application;
 import com.qagwaai.starmalaccamax.client.service.PlanetService;
 import com.qagwaai.starmalaccamax.client.service.action.AbstractPolyAction;
 import com.qagwaai.starmalaccamax.client.service.action.AbstractPolyResponse;
@@ -34,6 +33,7 @@ import com.qagwaai.starmalaccamax.client.service.action.RemovePlanetResponse;
 import com.qagwaai.starmalaccamax.client.service.action.Response;
 import com.qagwaai.starmalaccamax.client.service.action.UpdatePlanet;
 import com.qagwaai.starmalaccamax.client.service.action.UpdatePlanetResponse;
+import com.qagwaai.starmalaccamax.server.config.Configuration;
 import com.qagwaai.starmalaccamax.server.dao.DAOException;
 import com.qagwaai.starmalaccamax.server.dao.DAOFactory;
 import com.qagwaai.starmalaccamax.server.dao.PlanetDAO;
@@ -119,7 +119,7 @@ public final class PlanetServiceImpl extends RemoteServiceServlet implements Pla
     private AddPlanetResponse executeAddPlanet(final AddPlanet action) throws ServiceException {
         AddPlanetResponse response = new AddPlanetResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         PlanetDAO planetDAO = factory.getPlanetDAO();
         PlanetDTO foundPlanet = null;
         try {
@@ -144,7 +144,7 @@ public final class PlanetServiceImpl extends RemoteServiceServlet implements Pla
     private BulkAddPlanetResponse executeBulkAddPlanet(final BulkAddPlanet action) throws ServiceException {
         BulkAddPlanetResponse response = new BulkAddPlanetResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         PlanetDAO planetDAO = factory.getPlanetDAO();
         ArrayList<PlanetDTO> foundPlanet = null;
         try {
@@ -169,7 +169,7 @@ public final class PlanetServiceImpl extends RemoteServiceServlet implements Pla
      */
     private GetAllPlanetsResponse executeGetAllPlanets(final GetAllPlanets action) throws ServiceException {
         GetAllPlanetsResponse response = new GetAllPlanetsResponse();
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         PlanetDAO planetDAO = factory.getPlanetDAO();
 
         ArrayList<PlanetDTO> foundPlanets = null;
@@ -219,7 +219,7 @@ public final class PlanetServiceImpl extends RemoteServiceServlet implements Pla
 
         GetPlanetResponse response = new GetPlanetResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         PlanetDAO planetDAO = factory.getPlanetDAO();
         PlanetDTO foundPlanet = null;
         try {
@@ -243,7 +243,7 @@ public final class PlanetServiceImpl extends RemoteServiceServlet implements Pla
      */
     private GetPlanetsForSolarSystemResponse executeGetPlanetsForSolarSystem(final GetPlanetsForSolarSystem action)
         throws ServiceException {
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         PlanetDAO planetDAO = factory.getPlanetDAO();
 
         ArrayList<PlanetDTO> foundPlanets = null;
@@ -282,7 +282,7 @@ public final class PlanetServiceImpl extends RemoteServiceServlet implements Pla
      */
     private RemoveAllPlanetsResponse executeRemoveAllPlanets(final RemoveAllPlanets action) throws ServiceException {
         RemoveAllPlanetsResponse response = new RemoveAllPlanetsResponse();
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         PlanetDAO planetDAO = factory.getPlanetDAO();
         Boolean result = null;
         try {
@@ -307,7 +307,7 @@ public final class PlanetServiceImpl extends RemoteServiceServlet implements Pla
     private RemovePlanetResponse executeRemovePlanet(final RemovePlanet action) throws ServiceException {
         RemovePlanetResponse response = new RemovePlanetResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         PlanetDAO planetDAO = factory.getPlanetDAO();
         // boolean foundPlanet = false;
         try {
@@ -335,7 +335,7 @@ public final class PlanetServiceImpl extends RemoteServiceServlet implements Pla
     private UpdatePlanetResponse executeUpdatePlanet(final UpdatePlanet action) throws ServiceException {
         UpdatePlanetResponse response = new UpdatePlanetResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         PlanetDAO planetDAO = factory.getPlanetDAO();
         PlanetDTO foundPlanet = null;
         try {

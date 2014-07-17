@@ -13,7 +13,6 @@ import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestC
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import com.google.appengine.tools.development.testing.LocalUserServiceTestConfig;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import com.qagwaai.starmalaccamax.client.Application;
 import com.qagwaai.starmalaccamax.client.service.UserService;
 import com.qagwaai.starmalaccamax.client.service.action.Action;
 import com.qagwaai.starmalaccamax.client.service.action.AddUser;
@@ -29,6 +28,7 @@ import com.qagwaai.starmalaccamax.client.service.action.RemoveUserResponse;
 import com.qagwaai.starmalaccamax.client.service.action.Response;
 import com.qagwaai.starmalaccamax.client.service.action.UpdateUser;
 import com.qagwaai.starmalaccamax.client.service.action.UpdateUserResponse;
+import com.qagwaai.starmalaccamax.server.config.Configuration;
 import com.qagwaai.starmalaccamax.server.dao.DAOException;
 import com.qagwaai.starmalaccamax.server.dao.DAOFactory;
 import com.qagwaai.starmalaccamax.server.dao.UserDAO;
@@ -106,7 +106,7 @@ public final class UserServiceImpl extends RemoteServiceServlet implements UserS
     private AddUserResponse executeAddUser(final AddUser action) throws ServiceException {
         AddUserResponse response = new AddUserResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         UserDAO userDAO = factory.getUserDAO();
         UserDTO foundUser = null;
         try {
@@ -131,7 +131,7 @@ public final class UserServiceImpl extends RemoteServiceServlet implements UserS
      */
     private GetAllUsersResponse executeGetAllUsers(final GetAllUsers action) throws ServiceException {
         GetAllUsersResponse response = new GetAllUsersResponse();
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         UserDAO userDAO = factory.getUserDAO();
 
         ArrayList<UserDTO> foundUsers = null;
@@ -162,7 +162,7 @@ public final class UserServiceImpl extends RemoteServiceServlet implements UserS
 
         GetUserResponse response = new GetUserResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         UserDAO userDAO = factory.getUserDAO();
         UserDTO foundUser = null;
         try {
@@ -186,7 +186,7 @@ public final class UserServiceImpl extends RemoteServiceServlet implements UserS
      */
     private RemoveAllUsersResponse executeRemoveAllUsers(final RemoveAllUsers action) throws ServiceException {
         RemoveAllUsersResponse response = new RemoveAllUsersResponse();
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         UserDAO userDAO = factory.getUserDAO();
         Boolean result = null;
         try {
@@ -211,7 +211,7 @@ public final class UserServiceImpl extends RemoteServiceServlet implements UserS
     private RemoveUserResponse executeRemoveUser(final RemoveUser action) throws ServiceException {
         RemoveUserResponse response = new RemoveUserResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         UserDAO userDAO = factory.getUserDAO();
         // boolean foundUser = false;
         try {
@@ -236,7 +236,7 @@ public final class UserServiceImpl extends RemoteServiceServlet implements UserS
     private UpdateUserResponse executeUpdateUser(final UpdateUser action) throws ServiceException {
         UpdateUserResponse response = new UpdateUserResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         UserDAO userDAO = factory.getUserDAO();
         UserDTO foundUser = null;
         try {

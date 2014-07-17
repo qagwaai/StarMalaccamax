@@ -33,7 +33,7 @@ public class ObjectifyShipDAO implements ShipDAO {
 			if (criterion instanceof SimpleFilterItem) {
 				SimpleFilterItem item = (SimpleFilterItem) criterion;
 				if (item.getField().equals("ownerId")) {
-					command = command.filter(item.getField(), Integer.valueOf(item.getValue()).intValue());
+					command = command.filter(item.getField(), Long.valueOf(item.getValue()).longValue());
 				} else if ( item.getField().equals("id")) {
 					command = (Query<ShipDTO>) command.filterKey(Key.create(ShipDTO.class, Long.valueOf(item.getValue()).longValue()));
 				}

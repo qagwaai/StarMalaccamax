@@ -18,7 +18,6 @@ import org.junit.Test;
 import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import com.google.appengine.tools.development.testing.LocalUserServiceTestConfig;
-import com.qagwaai.starmalaccamax.client.Application;
 import com.qagwaai.starmalaccamax.server.dao.DAOFactory;
 import com.qagwaai.starmalaccamax.server.dao.MarketDAO;
 import com.qagwaai.starmalaccamax.shared.model.Market;
@@ -80,7 +79,7 @@ public final class MarketDataTest {
 	 */
 	@Test
 	public void testCreateAndLoad() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		MarketDAO dao = factory.getMarketDAO();
 		Assert.assertNotNull(dao);
 
@@ -103,7 +102,7 @@ public final class MarketDataTest {
 	 */
 	@Test
 	public void testGetMarketForPlanet() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		MarketDAO dao = factory.getMarketDAO();
 		Assert.assertNotNull(dao);
 		addLotsOfRecords(dao);
@@ -122,7 +121,7 @@ public final class MarketDataTest {
 	 */
 	@Test
 	public void testGetMarkets() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		MarketDAO dao = factory.getMarketDAO();
 		Assert.assertNotNull(dao);
 
@@ -150,7 +149,7 @@ public final class MarketDataTest {
 	 */
 	@Test
 	public void testLastVisitedSort() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		MarketDAO dao = factory.getMarketDAO();
 		Assert.assertNotNull(dao);
 		addLotsOfRecords(dao);
@@ -167,7 +166,7 @@ public final class MarketDataTest {
 	 */
 	@Test
 	public void testRemove() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		MarketDAO dao = factory.getMarketDAO();
 		Assert.assertNotNull(dao);
 
@@ -190,7 +189,7 @@ public final class MarketDataTest {
 	 */
 	@Test
 	public void testTotal() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		MarketDAO dao = factory.getMarketDAO();
 		Assert.assertNotNull(dao);
 
@@ -217,7 +216,7 @@ public final class MarketDataTest {
 	 */
 	@Test
 	public void testUpdate() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		MarketDAO dao = factory.getMarketDAO();
 		Assert.assertNotNull(dao);
 

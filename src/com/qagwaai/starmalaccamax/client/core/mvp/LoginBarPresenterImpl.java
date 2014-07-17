@@ -6,6 +6,11 @@
  */
 package com.qagwaai.starmalaccamax.client.core.mvp;
 
+import com.google.api.gwt.oauth2.client.AuthRequest;
+import com.google.gwt.core.client.Callback;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.Window;
+import com.qagwaai.starmalaccamax.client.Application;
 import com.qagwaai.starmalaccamax.client.admin.mvp.handlers.ManageCaptainsMenuClickHandlerImpl;
 import com.qagwaai.starmalaccamax.client.admin.mvp.handlers.ManageClosestMenuClickHandlerImpl;
 import com.qagwaai.starmalaccamax.client.admin.mvp.handlers.ManageGameEventsMenuClickHandlerImpl;
@@ -156,12 +161,68 @@ public final class LoginBarPresenterImpl extends AbstractPresenter<LoginBarView,
             // getView().getCalendarSummaryButton().setDisabled(false);
             getView().setOpportunitiesButtonDisabled(false);
             getView().setCommunicationsButtonDisabled(false);
+            addGoogleAuthHelper();
         } else {
             getView().setLogin(event.getLoginUrl());
         }
         getView().setLogoutButtonDisabled(false);
     }
 
+	private void addGoogleAuthHelper() {
+		final AuthRequest req = new AuthRequest(Application.GOOGLE_AUTH_URL, Application.GOOGLE_CLIENT_ID)
+				.withScopes(Application.PLUS_ME_SCOPE);
+		Application.getInstance().getAuth().login(req, new Callback<String, Throwable>() {
+			@Override
+			public void onSuccess(final String token) {
+
+				if (!token.isEmpty()) {
+					Window.alert(token);
+					/*greetingService.loginDetails(token, new AsyncCallback<LoginInfo>() {
+						@Override
+						public void onFailure(final Throwable caught) {
+							GWT.log("loginDetails -> onFailure");
+						}
+
+						@Override
+						public void onSuccess(final LoginInfo loginInfo) {
+							signInLink.setText(loginInfo.getName());
+							nameField.setText(loginInfo.getName());
+							signInLink.setStyleName("login-area");
+							loginImage.setUrl(loginInfo.getPictureUrl());
+							loginImage.setVisible(false);
+							loginPanel.add(loginImage);
+							loginImage.addLoadHandler(new LoadHandler() {
+								@Override
+								public void onLoad(final LoadEvent event) {
+									final int newWidth = 24;
+									final com.google.gwt.dom.client.Element element = event
+											.getRelativeElement();
+									if (element.equals(loginImage.getElement())) {
+										final int originalHeight = loginImage.getOffsetHeight();
+										final int originalWidth = loginImage.getOffsetWidth();
+										if (originalHeight > originalWidth) {
+											loginImage.setHeight(newWidth + "px");
+										} else {
+											loginImage.setWidth(newWidth + "px");
+										}
+										loginImage.setVisible(true);
+									}
+								}
+							});
+						}
+					});*/
+				}
+			}
+
+			@Override
+			public void onFailure(final Throwable caught) {
+				GWT.log("Error -> loginDetails\n" + caught.getMessage());
+			}
+		});
+	}
+
+	// TODO #07:> end
+    
     /**
      * 
      * {@inheritDoc}

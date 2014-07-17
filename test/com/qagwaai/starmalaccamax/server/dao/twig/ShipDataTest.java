@@ -17,7 +17,6 @@ import org.junit.Test;
 import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import com.google.appengine.tools.development.testing.LocalUserServiceTestConfig;
-import com.qagwaai.starmalaccamax.client.Application;
 import com.qagwaai.starmalaccamax.server.dao.DAOFactory;
 import com.qagwaai.starmalaccamax.server.dao.ShipDAO;
 import com.qagwaai.starmalaccamax.shared.model.CaptainDTO;
@@ -79,7 +78,7 @@ public final class ShipDataTest {
 	 */
 	@Test
 	public void testCreateAndLoad() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		ShipDAO dao = factory.getShipDAO();
 		Assert.assertNotNull(dao);
 
@@ -102,7 +101,7 @@ public final class ShipDataTest {
 	 */
 	@Test
 	public void testGetShipForCaptain() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		ShipDAO dao = factory.getShipDAO();
 		Assert.assertNotNull(dao);
 		addLotsOfRecords(dao);
@@ -121,7 +120,7 @@ public final class ShipDataTest {
 	 */
 	@Test
 	public void testGetShips() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		ShipDAO dao = factory.getShipDAO();
 		Assert.assertNotNull(dao);
 
@@ -149,7 +148,7 @@ public final class ShipDataTest {
 	 */
 	@Test
 	public void testLastVisitedSort() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		ShipDAO dao = factory.getShipDAO();
 		Assert.assertNotNull(dao);
 		addLotsOfRecords(dao);
@@ -166,7 +165,7 @@ public final class ShipDataTest {
 	 */
 	@Test
 	public void testRemove() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		ShipDAO dao = factory.getShipDAO();
 		Assert.assertNotNull(dao);
 
@@ -189,7 +188,7 @@ public final class ShipDataTest {
 	 */
 	@Test
 	public void testTotal() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		ShipDAO dao = factory.getShipDAO();
 		Assert.assertNotNull(dao);
 
@@ -216,7 +215,7 @@ public final class ShipDataTest {
 	 */
 	@Test
 	public void testUpdate() throws Exception {
-		DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+		DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.TWIG);
 		ShipDAO dao = factory.getShipDAO();
 		Assert.assertNotNull(dao);
 

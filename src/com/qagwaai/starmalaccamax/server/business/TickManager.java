@@ -10,11 +10,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Logger;
 
-import com.qagwaai.starmalaccamax.client.Application;
 import com.qagwaai.starmalaccamax.server.Instrumentation;
 import com.qagwaai.starmalaccamax.server.business.tick.LaunchShipCommand;
 import com.qagwaai.starmalaccamax.server.business.tick.TickException;
 import com.qagwaai.starmalaccamax.server.business.tick.TravelShipCommand;
+import com.qagwaai.starmalaccamax.server.config.Configuration;
 import com.qagwaai.starmalaccamax.server.dao.DAOException;
 import com.qagwaai.starmalaccamax.server.dao.DAOFactory;
 import com.qagwaai.starmalaccamax.server.dao.GameActivityDAO;
@@ -67,7 +67,7 @@ public final class TickManager {
      */
     public void tick() throws ServiceException {
         long startTime = Instrumentation.callStart("TickManager.tick");
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         GameEventDAO gameEventDAO = factory.getGameEventDAO();
         GameActivityDAO gameActivityDAO = factory.getGameActivityDAO();
 
@@ -115,7 +115,7 @@ public final class TickManager {
      * for test data
      */
     public void insertSampleGameEvents() {
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         GameEventDAO gameEventDAO = factory.getGameEventDAO();
         GameActivityDAO gameActivityDAO = factory.getGameActivityDAO();
         ShipDAO shipDAO = factory.getShipDAO();

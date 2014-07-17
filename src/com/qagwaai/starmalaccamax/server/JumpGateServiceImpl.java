@@ -9,7 +9,6 @@ import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestC
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import com.google.appengine.tools.development.testing.LocalUserServiceTestConfig;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import com.qagwaai.starmalaccamax.client.Application;
 import com.qagwaai.starmalaccamax.client.service.JumpGateService;
 import com.qagwaai.starmalaccamax.client.service.action.Action;
 import com.qagwaai.starmalaccamax.client.service.action.AddJumpGate;
@@ -25,6 +24,7 @@ import com.qagwaai.starmalaccamax.client.service.action.RemoveJumpGateResponse;
 import com.qagwaai.starmalaccamax.client.service.action.Response;
 import com.qagwaai.starmalaccamax.client.service.action.UpdateJumpGate;
 import com.qagwaai.starmalaccamax.client.service.action.UpdateJumpGateResponse;
+import com.qagwaai.starmalaccamax.server.config.Configuration;
 import com.qagwaai.starmalaccamax.server.dao.DAOException;
 import com.qagwaai.starmalaccamax.server.dao.DAOFactory;
 import com.qagwaai.starmalaccamax.server.dao.JumpGateDAO;
@@ -103,7 +103,7 @@ public final class JumpGateServiceImpl extends RemoteServiceServlet implements J
     private AddJumpGateResponse executeAddJumpGate(final AddJumpGate action) throws ServiceException {
         AddJumpGateResponse response = new AddJumpGateResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         JumpGateDAO jumpGateDAO = factory.getJumpGateDAO();
         JumpGateDTO foundJumpGate = null;
         try {
@@ -128,7 +128,7 @@ public final class JumpGateServiceImpl extends RemoteServiceServlet implements J
     private BulkAddJumpGateResponse executeBulkAddJumpGate(final BulkAddJumpGate action) throws ServiceException {
         BulkAddJumpGateResponse response = new BulkAddJumpGateResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         JumpGateDAO jumpGateDAO = factory.getJumpGateDAO();
         ArrayList<JumpGateDTO> foundJumpGate = null;
         try {
@@ -153,7 +153,7 @@ public final class JumpGateServiceImpl extends RemoteServiceServlet implements J
      */
     private GetAllJumpGatesResponse executeGetAllJumpGates(final GetAllJumpGates action) throws ServiceException {
         GetAllJumpGatesResponse response = new GetAllJumpGatesResponse();
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         JumpGateDAO jumpGateDAO = factory.getJumpGateDAO();
 
         ArrayList<JumpGateDTO> foundJumpGates = null;
@@ -201,7 +201,7 @@ public final class JumpGateServiceImpl extends RemoteServiceServlet implements J
     private RemoveAllJumpGatesResponse executeRemoveAllJumpGates(final RemoveAllJumpGates action)
         throws ServiceException {
         RemoveAllJumpGatesResponse response = new RemoveAllJumpGatesResponse();
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         JumpGateDAO jumpGateDAO = factory.getJumpGateDAO();
         Boolean result = null;
         try {
@@ -226,7 +226,7 @@ public final class JumpGateServiceImpl extends RemoteServiceServlet implements J
     private RemoveJumpGateResponse executeRemoveJumpGate(final RemoveJumpGate action) throws ServiceException {
         RemoveJumpGateResponse response = new RemoveJumpGateResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         JumpGateDAO jumpGateDAO = factory.getJumpGateDAO();
         // boolean foundJumpGate = false;
         try {
@@ -251,7 +251,7 @@ public final class JumpGateServiceImpl extends RemoteServiceServlet implements J
     private UpdateJumpGateResponse executeUpdateJumpGate(final UpdateJumpGate action) throws ServiceException {
         UpdateJumpGateResponse response = new UpdateJumpGateResponse();
 
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         JumpGateDAO jumpGateDAO = factory.getJumpGateDAO();
         JumpGateDTO foundJumpGate = null;
         try {

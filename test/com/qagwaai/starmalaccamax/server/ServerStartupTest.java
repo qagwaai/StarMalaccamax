@@ -11,7 +11,7 @@ import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import com.google.appengine.tools.development.testing.LocalUserServiceTestConfig;
-import com.qagwaai.starmalaccamax.client.Application;
+import com.qagwaai.starmalaccamax.server.config.Configuration;
 import com.qagwaai.starmalaccamax.server.dao.DAOFactory;
 import com.qagwaai.starmalaccamax.server.dao.ShipDAO;
 
@@ -41,7 +41,7 @@ public class ServerStartupTest {
     }
     @Test
     public void test() {
-	DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+	DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
 	ShipDAO dao = factory.getShipDAO();
 	Assert.assertNotNull(dao);
     }

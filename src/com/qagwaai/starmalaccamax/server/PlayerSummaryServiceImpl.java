@@ -9,7 +9,6 @@ import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestC
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import com.google.appengine.tools.development.testing.LocalUserServiceTestConfig;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import com.qagwaai.starmalaccamax.client.Application;
 import com.qagwaai.starmalaccamax.client.service.PlayerSummaryService;
 import com.qagwaai.starmalaccamax.client.service.action.Action;
 import com.qagwaai.starmalaccamax.client.service.action.GetPlayerOpportunitiesPage;
@@ -18,6 +17,7 @@ import com.qagwaai.starmalaccamax.client.service.action.GetPlayerSummaryPage;
 import com.qagwaai.starmalaccamax.client.service.action.GetPlayerSummaryPageResponse;
 import com.qagwaai.starmalaccamax.client.service.action.Response;
 import com.qagwaai.starmalaccamax.server.business.MarketOpportunities;
+import com.qagwaai.starmalaccamax.server.config.Configuration;
 import com.qagwaai.starmalaccamax.server.dao.CaptainDAO;
 import com.qagwaai.starmalaccamax.server.dao.DAOException;
 import com.qagwaai.starmalaccamax.server.dao.DAOFactory;
@@ -90,7 +90,7 @@ public final class PlayerSummaryServiceImpl extends RemoteServiceServlet impleme
     private GetPlayerOpportunitiesPageResponse
         executeGetPlayerOpportunitiesPage(final GetPlayerOpportunitiesPage action) throws ServiceException {
         GetPlayerOpportunitiesPageResponse response = new GetPlayerOpportunitiesPageResponse();
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         CaptainDAO captainDAO = factory.getCaptainDAO();
         ShipDAO shipDAO = factory.getShipDAO();
 
@@ -131,7 +131,7 @@ public final class PlayerSummaryServiceImpl extends RemoteServiceServlet impleme
     private GetPlayerSummaryPageResponse executeGetPlayerSummaryPage(final GetPlayerSummaryPage action)
         throws ServiceException {
         GetPlayerSummaryPageResponse response = new GetPlayerSummaryPageResponse();
-        DAOFactory factory = DAOFactory.getDAOFactory(Application.getInstance().getDAOFactory());
+        DAOFactory factory = DAOFactory.getDAOFactory(DAOFactory.OBJECTIFY);
         CaptainDAO captainDAO = factory.getCaptainDAO();
         ShipDAO shipDAO = factory.getShipDAO();
         GameEventDAO gameEventDAO = factory.getGameEventDAO();
