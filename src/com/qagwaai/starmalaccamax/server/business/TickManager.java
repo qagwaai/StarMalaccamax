@@ -14,7 +14,6 @@ import com.qagwaai.starmalaccamax.server.Instrumentation;
 import com.qagwaai.starmalaccamax.server.business.tick.LaunchShipCommand;
 import com.qagwaai.starmalaccamax.server.business.tick.TickException;
 import com.qagwaai.starmalaccamax.server.business.tick.TravelShipCommand;
-import com.qagwaai.starmalaccamax.server.config.Configuration;
 import com.qagwaai.starmalaccamax.server.dao.DAOException;
 import com.qagwaai.starmalaccamax.server.dao.DAOFactory;
 import com.qagwaai.starmalaccamax.server.dao.GameActivityDAO;

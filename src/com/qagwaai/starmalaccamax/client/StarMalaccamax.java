@@ -11,12 +11,14 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.qagwaai.starmalaccamax.client.core.HistoryManager;
 import com.qagwaai.starmalaccamax.client.core.Locations;
-import com.qagwaai.starmalaccamax.client.core.LoginWatcher;
 import com.qagwaai.starmalaccamax.client.core.StatsManager;
 import com.qagwaai.starmalaccamax.client.core.TimeoutManager;
 import com.qagwaai.starmalaccamax.client.core.channel.LoginListenerForChannel;
 import com.qagwaai.starmalaccamax.client.core.channel.PushMessageListener;
 import com.qagwaai.starmalaccamax.client.core.events.WindowResizedEvent;
+import com.qagwaai.starmalaccamax.client.core.mvp.LoginPresenter;
+import com.qagwaai.starmalaccamax.client.core.mvp.LoginView;
+import com.qagwaai.starmalaccamax.client.core.util.ClientUtils;
 import com.qagwaai.starmalaccamax.client.core.util.UncaughtHandler;
 import com.qagwaai.starmalaccamax.client.event.CurrentUserChangedEvent;
 import com.qagwaai.starmalaccamax.client.event.DefaultEventBus;
@@ -61,6 +63,15 @@ public final class StarMalaccamax implements EntryPoint {
      */
     @Override
     public void onModuleLoad() {
+        RootPanel.getBodyElement().removeChild(RootPanel.get("loadingWrapper").getElement());
+    	// if there is a client side session show, Logout link
+        if (!ClientUtils.alreadyLoggedIn()) {
+        	LoginView loginScreen = new LoginView();
+        	LoginPresenter presenter = new LoginPresenter(loginScreen);
+        	RootPanel.get().add(loginScreen);
+        	return;
+        }
+    	
     	Bridge.exportStaticMethod();
 
         eventBus = new DefaultEventBus();
@@ -77,14 +88,13 @@ public final class StarMalaccamax implements EntryPoint {
 
         TimeoutManager.getInstance().initializeManager(0, 0);
         // start watching for login/logoff events
-        LoginWatcher watcher = LoginWatcher.getInstance();
-        watcher.start(eventBus);
+        //LoginWatcher watcher = LoginWatcher.getInstance();
+        //watcher.start(eventBus);
         // watch for new login so that we can setup a push channel
         eventBus.addHandler(CurrentUserChangedEvent.getType(), new LoginListenerForChannel(eventBus));
         // TODO test for logging - disconnect
         eventBus.addHandler(PushMessageReceivedEvent.getType(), new PushMessageListener());
 
-        RootPanel.getBodyElement().removeChild(RootPanel.get("loadingWrapper").getElement());
         Window.addResizeHandler(new ResizeHandler() {
 
             @Override
@@ -92,6 +102,7 @@ public final class StarMalaccamax implements EntryPoint {
                 WindowResizedEvent.fire(eventBus);
             }
         });
+        
     }
 
     private void mapKeys() {
@@ -108,4 +119,5 @@ public final class StarMalaccamax implements EntryPoint {
             }
         });
     }
+
 }

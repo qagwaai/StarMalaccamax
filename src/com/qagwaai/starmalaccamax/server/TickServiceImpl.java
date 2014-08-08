@@ -53,7 +53,7 @@ public final class TickServiceImpl extends RemoteServiceServlet {
 		try {
 		    // Grab the Scheduler instance from the Factory
 		    Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
-		    System.out.println(scheduler.isStarted());
+		    // System.out.println(scheduler.isStarted());
 		    // define the job and tie it to our HelloJob class
 		    JobDetail job = newJob(DevTickJob.class)
 		        .withIdentity("job1", "group1")

@@ -19,6 +19,8 @@ import com.qagwaai.starmalaccamax.client.service.action.AddUser;
 import com.qagwaai.starmalaccamax.client.service.action.AddUserResponse;
 import com.qagwaai.starmalaccamax.client.service.action.GetAllUsers;
 import com.qagwaai.starmalaccamax.client.service.action.GetAllUsersResponse;
+import com.qagwaai.starmalaccamax.client.service.action.GetAuthorizationUrl;
+import com.qagwaai.starmalaccamax.client.service.action.GetAuthorizationUrlResponse;
 import com.qagwaai.starmalaccamax.client.service.action.GetUser;
 import com.qagwaai.starmalaccamax.client.service.action.GetUserResponse;
 import com.qagwaai.starmalaccamax.client.service.action.RemoveAllUsers;
@@ -28,11 +30,14 @@ import com.qagwaai.starmalaccamax.client.service.action.RemoveUserResponse;
 import com.qagwaai.starmalaccamax.client.service.action.Response;
 import com.qagwaai.starmalaccamax.client.service.action.UpdateUser;
 import com.qagwaai.starmalaccamax.client.service.action.UpdateUserResponse;
-import com.qagwaai.starmalaccamax.server.config.Configuration;
+import com.qagwaai.starmalaccamax.client.service.action.VerifySocialUser;
+import com.qagwaai.starmalaccamax.client.service.action.VerifySocialUserResponse;
+import com.qagwaai.starmalaccamax.server.OAuth.OAuthHelper;
 import com.qagwaai.starmalaccamax.server.dao.DAOException;
 import com.qagwaai.starmalaccamax.server.dao.DAOFactory;
 import com.qagwaai.starmalaccamax.server.dao.UserDAO;
 import com.qagwaai.starmalaccamax.shared.ServiceException;
+import com.qagwaai.starmalaccamax.shared.model.CredentialDTO;
 import com.qagwaai.starmalaccamax.shared.model.UserDTO;
 
 /**
@@ -45,7 +50,6 @@ public final class UserServiceImpl extends RemoteServiceServlet implements UserS
      * Logger for this service
      */
     private static Logger log = Logger.getLogger(UserServiceImpl.class.getName());
-
     /**
      * {@inheritDoc}
      */
@@ -83,6 +87,10 @@ public final class UserServiceImpl extends RemoteServiceServlet implements UserS
             response = (T) executeRemoveUser((RemoveUser) action);
         } else if (action instanceof RemoveAllUsers) {
             response = (T) executeRemoveAllUsers((RemoveAllUsers) action);
+		} else if (action instanceof GetAuthorizationUrl) {
+			response = (T) executeGetAuthorizationUrl((GetAuthorizationUrl) action);
+		} else if (action instanceof VerifySocialUser) {
+			response = (T) executeVerifySocialUser((VerifySocialUser) action);
         }
 
         if (response != null) {
@@ -94,6 +102,32 @@ public final class UserServiceImpl extends RemoteServiceServlet implements UserS
         log.severe("Action not Implemented: " + action.getClass().getName());
         throw new ServiceException("Action not Implemented");
     }
+
+	private VerifySocialUserResponse executeVerifySocialUser(
+			final VerifySocialUser action) throws ServiceException {
+		VerifySocialUserResponse response = new VerifySocialUserResponse();
+
+		CredentialDTO credential = action.getCredential();
+
+		OAuthHelper helper = new OAuthHelper(getThreadLocalRequest()
+				.getSession());
+
+		response.setSocialUser(helper.verifySocialUser(credential));
+		return response;
+	}
+
+	private GetAuthorizationUrlResponse executeGetAuthorizationUrl(
+			final GetAuthorizationUrl action) throws ServiceException {
+		GetAuthorizationUrlResponse response = new GetAuthorizationUrlResponse();
+
+		CredentialDTO credential = action.getCredential();
+
+		OAuthHelper helper = new OAuthHelper(getThreadLocalRequest()
+				.getSession());
+
+		response.setAuthorizationUrl(helper.getAuthorizationUrl(credential));
+		return response;
+	}
 
     /**
      * 
@@ -249,4 +283,5 @@ public final class UserServiceImpl extends RemoteServiceServlet implements UserS
 
         return response;
     }
+
 }

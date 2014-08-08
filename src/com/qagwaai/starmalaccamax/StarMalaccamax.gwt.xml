@@ -14,7 +14,7 @@
 	<!--	<inherits name='com.google.gwt.user.theme.dark.Dark' />-->
 
 	<!-- Other module inherits                                      -->
-	<inherits name="com.google.api.gwt.oauth2.OAuth2" />
+	<!-- <inherits name="com.google.api.gwt.oauth2.OAuth2" /> -->
 	<!--	<inherits name='com.gwtplatform.mvp.Mvp' />-->
 <!--	<inherits name="com.smartgwt.SmartGwt" />-->
 	<inherits name="com.smartgwt.tools.SmartGwtTools" />
@@ -37,8 +37,11 @@
 	<source path='client' />
 	<source path='shared' />
 	
-	
-
+	<add-linker name="xsiframe" />
+	<set-property name="compiler.useSourceMaps" value="true"/>
+	<set-configuration-property name="includeSourceMapUrl" value="true" />
+	<set-configuration-property name="compiler.emulatedStack.recordLineNumbers" value="true" />
+	<set-configuration-property name="compiler.emulatedStack.recordFileNames" value="true" />
 	<!-- extend-property name="locale" values="de"/ -->
 	<!--
 		<define-configuration-property name="gin.ginjector" is-multi-valued="false" />
