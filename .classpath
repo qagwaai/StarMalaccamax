@@ -2,6 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="src" path="resources"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/gwt-visualization.jar"/>
 	<classpathentry kind="lib" path="lib/mockito-all-1.8.5.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/gwt-gae-channel-0.3-alpha.jar"/>
@@ -12,20 +13,17 @@
 	<classpathentry kind="lib" path="war/WEB-INF/lib/twig-persist-2.0-beta3.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/quartz-2.1.6.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/slf4j-api-1.7.2.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/smartgwt-4.0.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/smartgwt-skins-4.0.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/scribe-1.3.6.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/argo-3.2.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/json-simple-1.1.1.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
-	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER/v2"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/App_Engine_Testing_1.9.6"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/App_Engine_Testing_1.9.8"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/objectify-5.0.3.jar"/>
 	<classpathentry kind="lib" path="lib/reflections-0.9.9-RC1.jar"/>
-	<classpathentry kind="lib" path="lib/javassist-3.16.1-GA.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/google-api-client-1.17.0-rc.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/google-oauth-client-1.17.0-rc.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/google-oauth-client-appengine-1.17.0-rc.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/gwt-oauth2-0.2-alpha.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/jackson-core-asl-1.9.1.jar"/>
+	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
+	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER/App Engine (2)"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/smartgwt-4.1p-2014-08-07.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/smartgwt-skins-4.1p-2014-08-07.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

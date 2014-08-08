@@ -32,3 +32,6 @@ www-test/
 
 Thumbs.db
 /WEB-INF
+/buildlog.txt
+/extras/
+/.classpath
